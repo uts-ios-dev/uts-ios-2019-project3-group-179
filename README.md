@@ -19,6 +19,7 @@ Out of scope:
 - Firebase Realtime Database API for realtime updates
 - Firebase Storage for secure storage and high data transfer speed
 - Firebase MLKit for quick image text extraction 
+- Material Design for an externally consistent design between different platforms
 
 
 
