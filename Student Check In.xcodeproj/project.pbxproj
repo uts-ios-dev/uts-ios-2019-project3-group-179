@@ -10,6 +10,9 @@
 		2367B8711026A990D50BA846 /* Pods_Student_Check_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51FEF9F14A50B0D9B3EA9D5D /* Pods_Student_Check_In.framework */; };
 		E168BAFDCBE8A0D535A5346D /* Pods_Student_Check_InUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B7BCFF8F229D2A4AA344D0 /* Pods_Student_Check_InUITests.framework */; };
 		F3910E5D7D4E1984F9B3B873 /* Pods_Student_Check_InTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */; };
+		F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092EFF2291475B00F7C4DC /* HomeViewController.swift */; };
+		F6092F0622917B5000F7C4DC /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092F0522917B5000F7C4DC /* NoteTableViewCell.swift */; };
+		F6092F0822917C4D00F7C4DC /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092F0722917C4D00F7C4DC /* Note.swift */; };
 		F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */; };
 		F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6EB228FF7C500D712A9 /* ViewController.swift */; };
 		F6D0C6EF228FF7C500D712A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C6ED228FF7C500D712A9 /* Main.storyboard */; };
@@ -47,6 +50,9 @@
 		83CECA31CFEBFB485A089BB2 /* Pods-Student Check InTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InTests.debug.xcconfig"; path = "Target Support Files/Pods-Student Check InTests/Pods-Student Check InTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB057EA6FEDE0F11B0FCE914 /* Pods-Student Check InUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InUITests.release.xcconfig"; path = "Target Support Files/Pods-Student Check InUITests/Pods-Student Check InUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_Check_InTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6092EFF2291475B00F7C4DC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Student Check In/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F6092F0522917B5000F7C4DC /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		F6092F0722917C4D00F7C4DC /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
 		F6D0C6E6228FF7C500D712A9 /* Student Check In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Student Check In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6D0C6EB228FF7C500D712A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 		F66150AF2290455B00681250 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6092EFF2291475B00F7C4DC /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -124,6 +131,7 @@
 		F66150B02290456100681250 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F6092F0722917C4D00F7C4DC /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */,
 				F6D0C6EB228FF7C500D712A9 /* ViewController.swift */,
 				F6D0C6ED228FF7C500D712A9 /* Main.storyboard */,
+				F6092F0522917B5000F7C4DC /* NoteTableViewCell.swift */,
 				F6D0C6F0228FF7C700D712A9 /* c.xcassets */,
 				F6D0C6F2228FF7C700D712A9 /* LaunchScreen.storyboard */,
 				F6D0C6F5228FF7C700D712A9 /* Info.plist */,
@@ -425,8 +434,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6092F0822917C4D00F7C4DC /* Note.swift in Sources */,
 				F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */,
+				F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */,
 				F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */,
+				F6092F0622917B5000F7C4DC /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
