@@ -18,24 +18,43 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     let placeholderTextColor = UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)
 
     var firebaseRepoManager: FirebaseRepoManager!
+    var viewNoteController: ViewNoteViewController?
+    var note: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseRepoManager = FirebaseRepoManager()
         noteTitleTextField.delegate = self
         noteDescriptionTextView.delegate = self
-        setDescriptionPlaceHolder()
+    
         /* disable it in the start so that it can be enabled once there is text in both the title and description */
         addButton.isEnabled = false
+        //If note is not nil then the user is editing a note
+        if let note = self.note {
+            noteTitleTextField.text = note.title
+            noteDescriptionTextView.text = note.description
+            addButton.title = "Save"
+        } else {
+            setDescriptionPlaceHolder()
+        }
         /* notify the action when the text changes*/
         noteTitleTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
-        if let title = noteTitleTextField.text, let description = noteDescriptionTextView.text {
-            firebaseRepoManager.addNote(note: Note(title: title, description: description, timeCreated: "12:40"))
+        let title = noteTitleTextField.text!
+        let description = noteDescriptionTextView.text!
+        if addButton.title == "Add" { //User is creating a new note
+            var note = Note(title: title, description: description, timeCreated: "12:40")
+            firebaseRepoManager.addNote(note: &note)
+        } else { //the user is updating a note
+            note!.title = title
+            note!.description = description
+            firebaseRepoManager.updateNote(note: note!)
+            viewNoteController?.note = note!
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
