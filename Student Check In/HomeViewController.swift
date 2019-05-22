@@ -37,10 +37,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    
+    //This method is used to handle the table view item taps
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected row is: \(notes[indexPath.row])")
+
+        /* create a new viewNoteViewController and pass the note selected to that controller */
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewNoteViewController = storyboard.instantiateViewController(withIdentifier: "ViewNoteViewController") as! ViewNoteViewController
+        viewNoteViewController.note = notes[indexPath.row]
+        self.present(viewNoteViewController, animated: true, completion: nil)
         
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
     
     
     

@@ -28,7 +28,8 @@ class FirebaseManager {
             let title = value["title"] as! String
             let description = value["description"] as! String
             let timeCreated = value["timeCreated"] as! String
-            controller.notes.append(Note(title: title, description: description, timeCreated: timeCreated))
+            let id = value["id"] as! String
+            controller.notes.append(Note(id: id, title: title, description: description, timeCreated: timeCreated))
             controller.notesTableView.reloadData()
         })
         //Observer for notes being changed in the database

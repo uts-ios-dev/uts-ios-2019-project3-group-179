@@ -15,6 +15,13 @@ struct Note {
     var description: String
     var timeCreated: String
     
+    init(id: String, title: String, description: String, timeCreated: String) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.timeCreated = timeCreated
+    }
+    
     init(title: String, description: String, timeCreated: String) {
         self.title = title
         self.description = description

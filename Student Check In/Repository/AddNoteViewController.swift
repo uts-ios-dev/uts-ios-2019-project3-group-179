@@ -1,4 +1,4 @@
-//
+//  This controller is used to handle the user input for adding a note and the UI logic
 //  AddNoteViewController.swift
 //  Student Check In
 //

@@ -12,5 +12,4 @@ enum Keys: String {
     case Note = "notes"
     case Task = "tasks"
     case File = "files"
-    
 }

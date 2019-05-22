@@ -26,6 +26,7 @@
 		F6D0C70A228FF7C700D712A9 /* Student_Check_InUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C709228FF7C700D712A9 /* Student_Check_InUITests.swift */; };
 		F6D0C718228FF83400D712A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C717228FF83400D712A9 /* GoogleService-Info.plist */; };
 		F6FE616C2294E3FA007BF170 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE616B2294E3FA007BF170 /* CardView.swift */; };
+		F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		F6D0C70B228FF7C700D712A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6D0C717228FF83400D712A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6FE616B2294E3FA007BF170 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewNoteViewController.swift; path = "Student Check In/VIew/ViewNoteViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				F6092EFF2291475B00F7C4DC /* HomeViewController.swift */,
 				F658A8D2229425A600ECA426 /* AddNoteViewController.swift */,
+				F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 			files = (
 				F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */,
 				F658A8D822943FC000ECA426 /* Keys.swift in Sources */,
+				F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */,
 				F658A8D12293F23A00ECA426 /* FirebaseObserverManager.swift in Sources */,
 				F6092F0822917C4D00F7C4DC /* Note.swift in Sources */,
 				F6FE616C2294E3FA007BF170 /* CardView.swift in Sources */,
