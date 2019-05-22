@@ -10,9 +10,14 @@ import Foundation
 
 struct Note {
     
-    var id: String
+    var id: String?
     var title: String
     var description: String
     var timeCreated: String
     
+    init(title: String, description: String, timeCreated: String) {
+        self.title = title
+        self.description = description
+        self.timeCreated = timeCreated
+    }
 }
