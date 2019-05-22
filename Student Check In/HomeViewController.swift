@@ -11,7 +11,7 @@ import MaterialComponents
 import FirebaseDatabase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+   
     @IBOutlet weak var notesTableView: UITableView!
 
     var firebaseManager: FirebaseManager!
@@ -36,5 +36,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.noteTimeCreatedLabel.text = notes[indexPath.row].timeCreated
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected row is: \(notes[indexPath.row])")
+        
+    }
+    
+    
     
 }
