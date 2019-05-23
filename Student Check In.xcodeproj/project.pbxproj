@@ -10,23 +10,8 @@
 		2367B8711026A990D50BA846 /* Pods_Student_Check_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51FEF9F14A50B0D9B3EA9D5D /* Pods_Student_Check_In.framework */; };
 		E168BAFDCBE8A0D535A5346D /* Pods_Student_Check_InUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B7BCFF8F229D2A4AA344D0 /* Pods_Student_Check_InUITests.framework */; };
 		F3910E5D7D4E1984F9B3B873 /* Pods_Student_Check_InTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */; };
-		F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092EFF2291475B00F7C4DC /* HomeViewController.swift */; };
-		F6092F0622917B5000F7C4DC /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092F0522917B5000F7C4DC /* NoteTableViewCell.swift */; };
-		F6092F0822917C4D00F7C4DC /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092F0722917C4D00F7C4DC /* Note.swift */; };
-		F658A8D12293F23A00ECA426 /* FirebaseObserverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D02293F23A00ECA426 /* FirebaseObserverManager.swift */; };
-		F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D2229425A600ECA426 /* AddNoteViewController.swift */; };
-		F658A8D522943E8300ECA426 /* FirebaseRepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */; };
-		F658A8D822943FC000ECA426 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D722943FC000ECA426 /* Keys.swift */; };
-		F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */; };
-		F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6EB228FF7C500D712A9 /* ViewController.swift */; };
-		F6D0C6EF228FF7C500D712A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C6ED228FF7C500D712A9 /* Main.storyboard */; };
-		F6D0C6F1228FF7C700D712A9 /* c.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C6F0228FF7C700D712A9 /* c.xcassets */; };
-		F6D0C6F4228FF7C700D712A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C6F2228FF7C700D712A9 /* LaunchScreen.storyboard */; };
 		F6D0C6FF228FF7C700D712A9 /* Student_Check_InTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6FE228FF7C700D712A9 /* Student_Check_InTests.swift */; };
 		F6D0C70A228FF7C700D712A9 /* Student_Check_InUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C709228FF7C700D712A9 /* Student_Check_InUITests.swift */; };
-		F6D0C718228FF83400D712A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C717228FF83400D712A9 /* GoogleService-Info.plist */; };
-		F6FE616C2294E3FA007BF170 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE616B2294E3FA007BF170 /* CardView.swift */; };
-		F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,29 +41,13 @@
 		83CECA31CFEBFB485A089BB2 /* Pods-Student Check InTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InTests.debug.xcconfig"; path = "Target Support Files/Pods-Student Check InTests/Pods-Student Check InTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB057EA6FEDE0F11B0FCE914 /* Pods-Student Check InUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InUITests.release.xcconfig"; path = "Target Support Files/Pods-Student Check InUITests/Pods-Student Check InUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_Check_InTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6092EFF2291475B00F7C4DC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Student Check In/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
-		F6092F0522917B5000F7C4DC /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
-		F6092F0722917C4D00F7C4DC /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
-		F658A8D02293F23A00ECA426 /* FirebaseObserverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseObserverManager.swift; sourceTree = "<group>"; };
-		F658A8D2229425A600ECA426 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNoteViewController.swift; path = "Student Check In/Repository/AddNoteViewController.swift"; sourceTree = SOURCE_ROOT; };
-		F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepoManager.swift; sourceTree = "<group>"; };
-		F658A8D722943FC000ECA426 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		F6D0C6E6228FF7C500D712A9 /* Student Check In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Student Check In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F6D0C6EB228FF7C500D712A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F6D0C6EE228FF7C500D712A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F6D0C6F0228FF7C700D712A9 /* c.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = c.xcassets; sourceTree = "<group>"; };
-		F6D0C6F3228FF7C700D712A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F6D0C6F5228FF7C700D712A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6D0C6FA228FF7C700D712A9 /* Student Check InTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Student Check InTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D0C6FE228FF7C700D712A9 /* Student_Check_InTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student_Check_InTests.swift; sourceTree = "<group>"; };
 		F6D0C700228FF7C700D712A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6D0C705228FF7C700D712A9 /* Student Check InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Student Check InUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D0C709228FF7C700D712A9 /* Student_Check_InUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student_Check_InUITests.swift; sourceTree = "<group>"; };
 		F6D0C70B228FF7C700D712A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F6D0C717228FF83400D712A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F6FE616B2294E3FA007BF170 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewNoteViewController.swift; path = "Student Check In/VIew/ViewNoteViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,45 +101,9 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F658A8CB2292CC9A00ECA426 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				F658A8D02293F23A00ECA426 /* FirebaseObserverManager.swift */,
-				F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		F658A8D622943FAC00ECA426 /* Keys */ = {
-			isa = PBXGroup;
-			children = (
-				F658A8D722943FC000ECA426 /* Keys.swift */,
-			);
-			path = Keys;
-			sourceTree = "<group>";
-		};
-		F66150AF2290455B00681250 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				F6092EFF2291475B00F7C4DC /* HomeViewController.swift */,
-				F658A8D2229425A600ECA426 /* AddNoteViewController.swift */,
-				F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		F66150B02290456100681250 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F6092F0722917C4D00F7C4DC /* Note.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		F6D0C6DD228FF7C500D712A9 = {
 			isa = PBXGroup;
 			children = (
-				F6D0C6E8228FF7C500D712A9 /* Student Check In */,
 				F6D0C6FD228FF7C700D712A9 /* Student Check InTests */,
 				F6D0C708228FF7C700D712A9 /* Student Check InUITests */,
 				F6D0C6E7228FF7C500D712A9 /* Products */,
@@ -189,26 +122,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F6D0C6E8228FF7C500D712A9 /* Student Check In */ = {
-			isa = PBXGroup;
-			children = (
-				F6FE61682294E186007BF170 /* VIew */,
-				F658A8D622943FAC00ECA426 /* Keys */,
-				F658A8CB2292CC9A00ECA426 /* Repository */,
-				F66150B02290456100681250 /* Model */,
-				F66150AF2290455B00681250 /* Controllers */,
-				F6D0C717228FF83400D712A9 /* GoogleService-Info.plist */,
-				F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */,
-				F6D0C6EB228FF7C500D712A9 /* ViewController.swift */,
-				F6D0C6ED228FF7C500D712A9 /* Main.storyboard */,
-				F6092F0522917B5000F7C4DC /* NoteTableViewCell.swift */,
-				F6D0C6F0228FF7C700D712A9 /* c.xcassets */,
-				F6D0C6F2228FF7C700D712A9 /* LaunchScreen.storyboard */,
-				F6D0C6F5228FF7C700D712A9 /* Info.plist */,
-			);
-			path = "Student Check In";
-			sourceTree = "<group>";
-		};
 		F6D0C6FD228FF7C700D712A9 /* Student Check InTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,14 +138,6 @@
 				F6D0C70B228FF7C700D712A9 /* Info.plist */,
 			);
 			path = "Student Check InUITests";
-			sourceTree = "<group>";
-		};
-		F6FE61682294E186007BF170 /* VIew */ = {
-			isa = PBXGroup;
-			children = (
-				F6FE616B2294E3FA007BF170 /* CardView.swift */,
-			);
-			path = VIew;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,10 +248,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6D0C6F4228FF7C700D712A9 /* LaunchScreen.storyboard in Resources */,
-				F6D0C718228FF83400D712A9 /* GoogleService-Info.plist in Resources */,
-				F6D0C6F1228FF7C700D712A9 /* c.xcassets in Resources */,
-				F6D0C6EF228FF7C500D712A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,17 +381,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */,
-				F658A8D822943FC000ECA426 /* Keys.swift in Sources */,
-				F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */,
-				F658A8D12293F23A00ECA426 /* FirebaseObserverManager.swift in Sources */,
-				F6092F0822917C4D00F7C4DC /* Note.swift in Sources */,
-				F6FE616C2294E3FA007BF170 /* CardView.swift in Sources */,
-				F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */,
-				F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */,
-				F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */,
-				F658A8D522943E8300ECA426 /* FirebaseRepoManager.swift in Sources */,
-				F6092F0622917B5000F7C4DC /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,25 +414,6 @@
 			targetProxy = F6D0C706228FF7C700D712A9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F6D0C6ED228FF7C500D712A9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6D0C6EE228FF7C500D712A9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F6D0C6F2228FF7C700D712A9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6D0C6F3228FF7C700D712A9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F6D0C70C228FF7C700D712A9 /* Debug */ = {
@@ -703,7 +574,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83CECA31CFEBFB485A089BB2 /* Pods-Student Check InTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Student Check InTests/Info.plist";
@@ -724,7 +594,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 237ED08C2894BC2C25F633F6 /* Pods-Student Check InTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Student Check InTests/Info.plist";
@@ -745,7 +614,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 500A6C50BE498B1CB9DEB97F /* Pods-Student Check InUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Student Check InUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -765,7 +633,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB057EA6FEDE0F11B0FCE914 /* Pods-Student Check InUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Student Check InUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
