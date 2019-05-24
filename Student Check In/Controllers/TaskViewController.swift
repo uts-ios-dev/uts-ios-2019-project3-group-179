@@ -18,7 +18,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTableView.estimatedRowHeight = CGFloat(95)
+        tasks.append(Task(title: "Test", dueDate: "Test", dueTime: "Test", description: "this is a very long test this is a very long test this is a very long testthis is a very long test this is a very long test this is a very long test this is a very long testthis is a very long test this is a very long test this is a very long test this is a very long testthis is a very long test"))
         tasks.append(Task(title: "Test", dueDate: "Test", dueTime: "Test", description: "this is a very long test"))
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
