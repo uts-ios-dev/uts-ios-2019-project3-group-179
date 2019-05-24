@@ -27,4 +27,12 @@ struct Note {
         self.description = description
         self.timeCreated = timeCreated
     }
+    
+    func toDictionary() -> NSDictionary {
+        let noteAsDictionary = ["id": self.id!,
+                                "title": self.title,
+                                "description": self.description,
+                                "timeCreated": self.timeCreated]
+        return noteAsDictionary as NSDictionary
+    }
 }
