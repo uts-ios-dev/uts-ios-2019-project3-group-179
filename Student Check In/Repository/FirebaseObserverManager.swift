@@ -26,6 +26,19 @@ extension DataSnapshot {
         return nil
     }
     
+    func toTask() -> Task? {
+        let taskAsDictionary = self.value as! [String: AnyObject]
+        let id = taskAsDictionary["id"] as! String
+        let title = taskAsDictionary["title"] as! String
+        let dueDate = taskAsDictionary["dueDate"] as! String
+        let dueTime = taskAsDictionary["dueTime"] as! String
+        let description = taskAsDictionary["description"] as! String
+        if !id.isEmpty && !title.isEmpty && !dueDate.isEmpty && !dueTime.isEmpty && !description.isEmpty {
+            return Task(id: id, title: title, dueDate: dueDate, dueTime: dueTime, description: description)
+        }
+        return nil
+    }
+    
 }
 
 class FirebaseManager {
@@ -67,9 +80,16 @@ class FirebaseManager {
         
     }
     
-    
-    func attachTasksListenerTo() {
-        
+    /// Attaches an observer to the task child in firebase and notifies the controller passed in when changes are made to the task child
+    ///
+    /// - Parameter controller: the controller to notify
+    func attachTasksObserverTo(controller: TaskViewController) {
+        let taskReference = ref.child(Keys.Task.rawValue)
+        taskReference.observe(.childAdded, with: { snapshot in
+            if let task = snapshot.toTask() {
+                //do something with the task 
+            }
+        })
     }
     
 }

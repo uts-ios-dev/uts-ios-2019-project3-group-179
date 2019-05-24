@@ -23,5 +23,22 @@ struct Task {
         self.description = description
     }
     
+    init(id: String, title: String, dueDate: String, dueTime: String, description: String) {
+        self.id = id
+        self.title = title
+        self.dueDate = dueDate
+        self.dueTime = dueTime
+        self.description = description
+    }
+    
+    mutating func toDictionary() -> NSDictionary {
+        let dictonary: [String: String] = ["id": self.id!,
+                                           "title": self.title,
+                                           "dueDate": self.dueDate,
+                                           "dueTime": self.dueTime,
+                                           "description": self.description]
+        return dictonary as NSDictionary
+    }
+    
     
 }

@@ -21,14 +21,8 @@ class FirebaseRepoManager {
     ///
     /// - Parameter note: the note to add to the database
     func addNote(note: inout Note) {
-        let noteRef = ref.child(Keys.Note.rawValue)
-        //create a new location to store the note
-        let newNoteKey = noteRef.childByAutoId().key
-        /* */
-        if let key = newNoteKey {
-            note.id = key
-            noteRef.child(key).setValue(note.toDictionary())
-        }
+        note.id = generateId(location: Keys.Note.rawValue)
+        addValue(location: Keys.Note.rawValue, value: note.toDictionary())
     }
     
     /// Updates the specified note in the database
@@ -37,6 +31,38 @@ class FirebaseRepoManager {
     func updateNote(note: Note) {
         let updateNoteRef = ref.child(Keys.Note.rawValue).child(note.id!)
         updateNoteRef.setValue(note.toDictionary())
+    }
+    
+    /// Adds a a task to the Firebase database
+    ///
+    /// - Parameter task: the task to add to the database
+    func addTask(task: inout Task) {
+        
+    }
+    
+    /// Updates a specified task
+    ///
+    /// - Parameter task: the task to update
+    func updateTask(task: inout Task) {
+        
+    }
+    
+    /// Pushes a value to the database
+    ///
+    /// - Parameters:
+    ///   - location: the location to push the value
+    ///   - value: the value to push
+    func addValue(location: String, value: NSDictionary) {
+        let valueRef = ref.child(location)
+        valueRef.child(value["id"] as! String).setValue(value)
+    }
+    
+    /// Generates a unique id for a specified location
+    ///
+    /// - Parameter location: the location to generate the id from
+    /// - Returns: the unique id
+    func generateId(location: String) -> String {
+        return ref.child(location).childByAutoId().key!
     }
     
     
