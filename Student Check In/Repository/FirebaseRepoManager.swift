@@ -45,7 +45,8 @@ class FirebaseRepoManager {
     ///
     /// - Parameter task: the task to update
     func updateTask(task: inout Task) {
-        
+        let updateTaskRef = ref.child(Keys.Task.rawValue).child(task.id!)
+        updateTaskRef.setValue(task.toDictionary())
     }
     
     /// Pushes a value to the database

@@ -15,10 +15,8 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteDescriptionTextView: UITextView!
     
-    
-
     var firebaseRepoManager: FirebaseRepoManager!
-    var viewNoteController: ViewNoteViewController?
+    var sendingController: ViewNoteViewController?
     var note: Note?
     
     override func viewDidLoad() {
@@ -52,7 +50,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             note!.title = title
             note!.description = description
             firebaseRepoManager.updateNote(note: note!)
-            viewNoteController?.note = note!
+            sendingController?.note = note!
         }
         self.dismiss(animated: true, completion: nil)
     }

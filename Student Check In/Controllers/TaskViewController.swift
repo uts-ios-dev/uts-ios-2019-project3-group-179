@@ -20,9 +20,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let firebaseManager = FirebaseManager()
         firebaseManager.attachTasksObserverTo(controller: self)
         taskTableView.estimatedRowHeight = CGFloat(95)
-        tasks.append(Task(title: "Test", dueDate: "Test", dueTime: "Test", description: "this is a very long test this is a very long test this is a very long testthis is a very long test this is a very long test this is a very long test this is a very long testthis is a very long test this is a very long test this is a very long test this is a very long testthis is a very long test"))
-        tasks.append(Task(title: "Test", dueDate: "Test", dueTime: "Test", description: "this is a very long test"))
-        tasks.append(Task(title: "Test", dueDate: "14 May 2019", dueTime: "2:09PM", description: "this is a very long test"))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,6 +45,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
+    func updateTask(task: Task) {
+        for index in 0...tasks.count - 1 {
+            if tasks[index].id! == task.id! {
+                tasks[index] = task
+                taskTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                break
+            }
+        }
+    }
 
 }

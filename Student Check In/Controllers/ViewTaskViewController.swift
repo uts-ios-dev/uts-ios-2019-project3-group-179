@@ -19,17 +19,31 @@ class ViewTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let task = self.task {
             taskTitleLabel.text = task.title
             taskDueDateLabel.text = task.dueDate
             taskDueTimeLabel.text = task.dueTime
             taskDescriptionLabel.text = task.description
         }
-        
-        
-        // Do any additional setup after loading the view.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editTaskSegue" {
+            let destination = segue.destination as! AddTaskViewController
+            destination.task = task
+            destination.sendingViewController = self
+        }
+    }
     
-
+    @IBAction func editButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "editTaskSegue", sender: nil)
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

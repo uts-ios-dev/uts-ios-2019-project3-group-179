@@ -62,7 +62,7 @@ class FirebaseManager {
             }
 
             if let note = snapshot.toNote() {
-                controller.notes.append(note)
+                controller.addNote(note: note)
                 controller.notesTableView.reloadData()
             }
         })
@@ -84,6 +84,12 @@ class FirebaseManager {
             if let task = snapshot.toTask() {
                 controller.tasks.append(task)
                 controller.taskTableView.reloadData()
+            }
+        })
+        
+        taskReference.observe(.childChanged, with: { snapshot in
+            if let task = snapshot.toTask() {
+                controller.updateTask(task: task)
             }
         })
         

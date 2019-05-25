@@ -39,8 +39,12 @@ class ViewNoteViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editNoteSegue" {
+            let editNoteController = segue.destination as! AddNoteViewController
+            editNoteController.note = note
+            editNoteController.sendingController = self
+        }
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -52,12 +56,6 @@ class ViewNoteViewController: UIViewController {
         performSegue(withIdentifier: "editNoteSegue", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editNoteSegue" {
-            let editNoteController = segue.destination as! AddNoteViewController
-            editNoteController.note = note
-            editNoteController.viewNoteController = self
-        }
-    }
+    
     
 }

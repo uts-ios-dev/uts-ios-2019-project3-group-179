@@ -41,6 +41,8 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
     var dateFormatter: DateFormatter!
     var datePicker: UIDatePicker!
     var timePicker: UIDatePicker!
+    var task: Task?
+    var sendingViewController: ViewTaskViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +50,20 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         dateFormatter = DateFormatter()
         datePicker = UIDatePicker()
         addButton.isEnabled = false
-        setUpPlaceHolderText()
+        taskDescriptionTextView.delegate = self
         taskTitleTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         taskDueDateTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         taskDueTimeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        taskDescriptionTextView.delegate = self
+        //If task is not nil then the user is editing a task
+        if let task = self.task {
+            addButton.title = "Save"
+            taskTitleTextField.text = task.title
+            taskDueDateTextField.text = task.dueDate
+            taskDueTimeTextField.text = task.dueTime
+            taskDescriptionTextView.text = task.description
+        } else {
+            setUpPlaceHolderText()
+        }
     }
     
     @IBAction func dueDateEditingBegan(_ sender: UITextField) {
@@ -72,8 +83,18 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         let dueDate = taskDueDateTextField.text!
         let dueTime = taskDueTimeTextField.text!
         let description = taskDescriptionTextView.text!
-        var task = Task(title: title, dueDate: dueDate, dueTime: dueTime, description: description)
-        firebaseRepoManager.addTask(task: &task)
+        if addButton.title == "Add" { //The user is adding a task
+            var task = Task(title: title, dueDate: dueDate, dueTime: dueTime, description: description)
+            firebaseRepoManager.addTask(task: &task)
+        } else { //the user is editing a task
+            task!.title = title
+            task!.dueDate = dueDate
+            task!.dueTime = dueTime
+            task!.description = description
+            firebaseRepoManager.updateTask(task: &task!)
+            sendingViewController?.task = task!
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
