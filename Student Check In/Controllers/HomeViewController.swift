@@ -53,7 +53,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let viewNoteViewController = storyboard.instantiateViewController(withIdentifier: "ViewNoteViewController") as! ViewNoteViewController
         viewNoteViewController.note = notes[indexPath.row]
         self.present(viewNoteViewController, animated: true, completion: nil)
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

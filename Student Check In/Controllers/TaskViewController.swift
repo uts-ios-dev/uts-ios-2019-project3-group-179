@@ -17,10 +17,12 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let firebaseManager = FirebaseManager()
+        firebaseManager.attachTasksObserverTo(controller: self)
         taskTableView.estimatedRowHeight = CGFloat(95)
         tasks.append(Task(title: "Test", dueDate: "Test", dueTime: "Test", description: "this is a very long test this is a very long test this is a very long testthis is a very long test this is a very long test this is a very long test this is a very long testthis is a very long test this is a very long test this is a very long test this is a very long testthis is a very long test"))
         tasks.append(Task(title: "Test", dueDate: "Test", dueTime: "Test", description: "this is a very long test"))
-        
+        tasks.append(Task(title: "Test", dueDate: "14 May 2019", dueTime: "2:09PM", description: "this is a very long test"))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,5 +38,16 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.taskDescriptionLabel.text = task.description
         return cell
     }
+    
+    /// Handles the cell tap on the task tableview
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewTaskController = storyboard.instantiateViewController(withIdentifier: "ViewTaskController") as! ViewTaskViewController
+        viewTaskController.task = tasks[indexPath.row]
+        self.present(viewTaskController, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
 
 }

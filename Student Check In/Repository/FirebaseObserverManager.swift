@@ -60,16 +60,11 @@ class FirebaseManager {
             if (controller.progressBar != nil) {
                 controller.progressBar.removeFromSuperview()
             }
-            /* let value = snapshot.value as! [String: AnyObject]
-            let title = value["title"] as! String
-            let description = value["description"] as! String
-            let timeCreated = value["timeCreated"] as! String
-            let id = value["id"] as! String */
+
             if let note = snapshot.toNote() {
                 controller.notes.append(note)
+                controller.notesTableView.reloadData()
             }
-            //controller.notes.append(Note(id: id, title: title, description: description, timeCreated: timeCreated))
-            controller.notesTableView.reloadData()
         })
         //Observer for notes being changed in the database
         notesReference.observe(.childChanged, with: { snapshot in
@@ -87,9 +82,12 @@ class FirebaseManager {
         let taskReference = ref.child(Keys.Task.rawValue)
         taskReference.observe(.childAdded, with: { snapshot in
             if let task = snapshot.toTask() {
-                //do something with the task 
+                controller.tasks.append(task)
+                controller.taskTableView.reloadData()
             }
         })
+        
+        
     }
     
 }

@@ -15,7 +15,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteDescriptionTextView: UITextView!
     
-    let placeholderTextColor = UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)
+    
 
     var firebaseRepoManager: FirebaseRepoManager!
     var viewNoteController: ViewNoteViewController?
@@ -63,7 +63,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     
     internal func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == placeholderTextColor {
+        if textView.textColor == Util.placeholderTextColor {
             textView.text = nil
             textView.textColor = UIColor.black
         }
@@ -88,15 +88,13 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     /// Enables the add navigation button if the title and description text isn't empty
     func tryToEnableAddButton() {
-        if let noteTitle = noteTitleTextField.text {
-            addButton.isEnabled = !noteTitle.isEmpty && (!noteDescriptionTextView.text.isEmpty && noteDescriptionTextView.textColor != placeholderTextColor)
-        }
+        addButton.isEnabled = !Util.areAnyTextFieldsEmpty(textFields: [noteTitleTextField]) && (!noteDescriptionTextView.text.isEmpty && noteDescriptionTextView.textColor != Util.placeholderTextColor)
     }
     
     /// Sets the placeholder text for the description textview
     func setDescriptionPlaceHolder() {
         /* this UIColor is the default placeholder text color*/
-        noteDescriptionTextView.textColor = placeholderTextColor
+        noteDescriptionTextView.textColor = Util.placeholderTextColor
         noteDescriptionTextView.text = "What's new?"
     }
     

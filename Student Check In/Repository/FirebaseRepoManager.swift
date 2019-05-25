@@ -37,7 +37,8 @@ class FirebaseRepoManager {
     ///
     /// - Parameter task: the task to add to the database
     func addTask(task: inout Task) {
-        
+        task.id = generateId(location: Keys.Task.rawValue)
+        addValue(location: Keys.Task.rawValue, value: task.toDictionary())
     }
     
     /// Updates a specified task

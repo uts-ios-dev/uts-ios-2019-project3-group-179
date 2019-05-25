@@ -9,6 +9,14 @@
 
 import UIKit
 
+extension String {
+    
+    func asUnderLineAttributeText() -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
+    }
+    
+}
+
 class ViewNoteViewController: UIViewController {
 
     @IBOutlet weak var navigationBarTitle: UINavigationItem!
@@ -26,7 +34,7 @@ class ViewNoteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let note = self.note {
-            noteTitleLabel.text = note.title
+            noteTitleLabel.attributedText = note.title.asUnderLineAttributeText()
             noteDescriptionLabel.text = note.description
         }
     }
