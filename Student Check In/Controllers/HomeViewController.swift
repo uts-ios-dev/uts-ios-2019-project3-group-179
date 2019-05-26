@@ -17,17 +17,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var noteSearchBar: UISearchBar!
     
     var firebaseManager: FirebaseManager!
-    var ref: DatabaseReference!
     //Store all the note data
     var notes: [Note] = []
     //Stores a list of the filtered data
     var filteredNotes: [Note] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseManager = FirebaseManager()
         firebaseManager.attachNotesObserverTo(controller: self)
-        filteredNotes.insert(contentsOf: notes, at: 0)
         noteSearchBar.delegate = self
         //Setup the indeterminate progressbar
         progressBar.sizeToFit()
@@ -65,9 +64,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    /// Adds a note to the data source and the filter list
+    ///
+    /// - Parameter note: the note to add to the data
     func addNote(note: Note) {
         notes.append(note)
-        filteredNotes.append(note)
+        //Only append the data to the tableview source if there is no filter
+        if isKeywordInNoteTitle(note: note, keyword: noteSearchBar.text!) {
+            filteredNotes.append(note)
+        } else {
+            filteredNotes.append(note)
+        }
     }
     
     /// Reflects the changes of a note in the tableview
@@ -89,16 +96,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     /// - Parameter searchText: the text to filter by
     func filterByCriteria(searchText: String) {
         if !searchText.isEmpty {
+            //Clear the filtered notes and add in notes that meet the critera
             filteredNotes.removeAll()
             for note in notes {
-                if note.title.lowercased().contains(searchText.lowercased()) {
+                //Match based on title keywords
+                if isKeywordInNoteTitle(note: note, keyword: searchText) {
                     filteredNotes.append(note)
                 }
             }
-        } else {
+        
+        } else { //if the searchbar is empty
+            //Show all the users notes
             filteredNotes = notes
         }
         notesTableView.reloadData()
+    }
+    
+    /// Determines if the keyword is contained in the note title
+    ///
+    /// - Parameters:
+    ///   - note: the note to check
+    ///   - keyword: the keyword to check if it is contained in the title
+    /// - Returns: true if the keyword is in the title otherwise false
+    func isKeywordInNoteTitle(note: Note, keyword: String) -> Bool {
+        return note.title.lowercased().contains(keyword.lowercased())
     }
     
     

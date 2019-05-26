@@ -117,10 +117,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         var formattedValue: String? = nil
         //Format the selected value based on whether the picker is in date or time mode
         if datePicker.datePickerMode == .date {
-            dateFormatter.dateFormat = "d MMM"
+            dateFormatter.dateFormat = Util.long_date_format
             formattedValue = dateFormatter.string(from: selectedValue)
         } else {
-            dateFormatter.dateFormat = "hh:mm a"
+            dateFormatter.dateFormat = Util.time_format
             formattedValue = dateFormatter.string(from: selectedValue)
         }
         //Set the value for the respective textfields
@@ -149,6 +149,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
+            taskDescriptionTextView.textColor = Util.placeholderTextColor
             textView.text = "Enter a description for the task"
         }
     }
