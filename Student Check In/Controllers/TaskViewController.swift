@@ -112,17 +112,27 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 //Filter by due month or due date and month
                 //Parse the date string to date objet
-                if let date: Date = dateFormatter.date(from: task.dueDate) {
+                dateFormatter.dateFormat = Util.long_date_format
+                if let date = dateFormatter.date(from: task.dueDate) {
                     //Only try to filter by date, if there the task date was parsed successfully
                     let calendar = Calendar.current
                     let taskDate = String(calendar.component(.day, from: date))
                     let taskMonth = date.month()
+                    //Filter by just month
+                    if searchText== taskMonth {
+                        filteredTasks.append(task)
+                    }
+                    
                     //Split the searchText, delimited by a space
                     let searchTextSplit = searchText.split(separator: " ")
-                    //Only continue with filtering if the text only has two components
+                    //Filter by specific date and month
                     if searchTextSplit.count == 2 {
+                        print("Component 0 is \(searchTextSplit[0])")
+                        print("Component 1 is \(searchTextSplit[1])")
+                        print("Task date is \(taskDate)")
+                        print("Task month is \(taskMonth)")
                         if (searchTextSplit[0] == taskDate || searchTextSplit[0] == taskMonth)
-                            && (searchTextSplit[1] == taskDate && searchTextSplit[1] == taskMonth) {
+                            && (searchTextSplit[1] == taskDate || searchTextSplit[1] == taskMonth) {
                                 filteredTasks.append(task)
                         }
                     }
