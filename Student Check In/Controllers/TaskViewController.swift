@@ -119,7 +119,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let taskDate = String(calendar.component(.day, from: date))
                     let taskMonth = date.month()
                     //Filter by just month
-                    if searchText== taskMonth {
+                    if searchText == taskMonth {
                         filteredTasks.append(task)
                     }
                     

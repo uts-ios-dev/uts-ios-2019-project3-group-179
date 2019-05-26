@@ -22,10 +22,14 @@
 		F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D2229425A600ECA426 /* AddNoteViewController.swift */; };
 		F658A8D522943E8300ECA426 /* FirebaseRepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */; };
 		F658A8D822943FC000ECA426 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F658A8D722943FC000ECA426 /* Keys.swift */; };
+		F6778E1A229A766A00962FD1 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6778E19229A766A00962FD1 /* FirebaseStorageManager.swift */; };
 		F6AF740A2296E595008E6631 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF74092296E595008E6631 /* Note.swift */; };
 		F6AF740C2296E5F2008E6631 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF740B2296E5F2008E6631 /* TaskViewController.swift */; };
 		F6AF74112296E604008E6631 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF740F2296E604008E6631 /* TaskTableViewCell.swift */; };
 		F6AF74132296E65D008E6631 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AF74122296E65D008E6631 /* Task.swift */; };
+		F6BB8E26229A5C4400D4571C /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB8E25229A5C4400D4571C /* FileTableViewCell.swift */; };
+		F6BB8E28229A5C4C00D4571C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB8E27229A5C4C00D4571C /* File.swift */; };
+		F6BB8E2A229A5F1D00D4571C /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB8E29229A5F1D00D4571C /* FileViewController.swift */; };
 		F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */; };
 		F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0C6EB228FF7C500D712A9 /* ViewController.swift */; };
 		F6D0C6EF228FF7C500D712A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D0C6ED228FF7C500D712A9 /* Main.storyboard */; };
@@ -64,7 +68,7 @@
 		8199420A0DD891D56DB25F2B /* Pods-Student Check In.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check In.release.xcconfig"; path = "Target Support Files/Pods-Student Check In/Pods-Student Check In.release.xcconfig"; sourceTree = "<group>"; };
 		83CECA31CFEBFB485A089BB2 /* Pods-Student Check InTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InTests.debug.xcconfig"; path = "Target Support Files/Pods-Student Check InTests/Pods-Student Check InTests.debug.xcconfig"; sourceTree = "<group>"; };
 		850F0055229A2BD500D797BD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		8587C22B229A2D550007EC19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = "/Users/Jacky/Desktop/uts-ios-2019-project3-group-179/Student Check In/Controllers/RegisterViewController.swift"; sourceTree = "<absolute>"; };
+		8587C22B229A2D550007EC19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BB057EA6FEDE0F11B0FCE914 /* Pods-Student Check InUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InUITests.release.xcconfig"; path = "Target Support Files/Pods-Student Check InUITests/Pods-Student Check InUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_Check_InTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6092EFF2291475B00F7C4DC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Student Check In/Controllers/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -77,10 +81,14 @@
 		F658A8D2229425A600ECA426 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNoteViewController.swift; path = "Student Check In/Controllers/AddNoteViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepoManager.swift; sourceTree = "<group>"; };
 		F658A8D722943FC000ECA426 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		F6778E19229A766A00962FD1 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		F6AF74092296E595008E6631 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Model/Note.swift; sourceTree = SOURCE_ROOT; };
 		F6AF740B2296E5F2008E6631 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		F6AF740F2296E604008E6631 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		F6AF74122296E65D008E6631 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		F6BB8E25229A5C4400D4571C /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
+		F6BB8E27229A5C4C00D4571C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		F6BB8E29229A5F1D00D4571C /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
 		F6D0C6E6228FF7C500D712A9 /* Student Check In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Student Check In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D0C6E9228FF7C500D712A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6D0C6EB228FF7C500D712A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 			children = (
 				F658A8D02293F23A00ECA426 /* FirebaseObserverManager.swift */,
 				F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */,
+				F6778E19229A766A00962FD1 /* FirebaseStorageManager.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 				F64FE104229908D100A75316 /* AddTaskViewController.swift */,
 				F64FE10E229951B200A75316 /* ViewTaskViewController.swift */,
 				850F0055229A2BD500D797BD /* LoginViewController.swift */,
+				F6BB8E29229A5F1D00D4571C /* FileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +197,7 @@
 			children = (
 				F6AF74122296E65D008E6631 /* Task.swift */,
 				F6AF74092296E595008E6631 /* Note.swift */,
+				F6BB8E27229A5C4C00D4571C /* File.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				F6AF740F2296E604008E6631 /* TaskTableViewCell.swift */,
+				F6BB8E25229A5C4400D4571C /* FileTableViewCell.swift */,
 			);
 			path = CellView;
 			sourceTree = "<group>";
@@ -516,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6AF74112296E604008E6631 /* TaskTableViewCell.swift in Sources */,
+				F6BB8E26229A5C4400D4571C /* FileTableViewCell.swift in Sources */,
 				F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */,
 				F658A8D822943FC000ECA426 /* Keys.swift in Sources */,
 				F64FE10B22993D5900A75316 /* Util.swift in Sources */,
@@ -523,16 +536,19 @@
 				F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */,
 				F64FE105229908D100A75316 /* AddTaskViewController.swift in Sources */,
 				F658A8D12293F23A00ECA426 /* FirebaseObserverManager.swift in Sources */,
+				F6BB8E28229A5C4C00D4571C /* File.swift in Sources */,
 				F6FE616C2294E3FA007BF170 /* CardView.swift in Sources */,
 				F64FE10F229951B200A75316 /* ViewTaskViewController.swift in Sources */,
 				F6AF740C2296E5F2008E6631 /* TaskViewController.swift in Sources */,
 				8587C22C229A2D550007EC19 /* RegisterViewController.swift in Sources */,
 				F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */,
 				F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */,
+				F6778E1A229A766A00962FD1 /* FirebaseStorageManager.swift in Sources */,
 				F6AF740A2296E595008E6631 /* Note.swift in Sources */,
 				F64FE10D2299503700A75316 /* UITextViewFixed.swift in Sources */,
 				F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */,
 				F658A8D522943E8300ECA426 /* FirebaseRepoManager.swift in Sources */,
+				F6BB8E2A229A5F1D00D4571C /* FileViewController.swift in Sources */,
 				F6AF74132296E65D008E6631 /* Task.swift in Sources */,
 				F6092F0622917B5000F7C4DC /* NoteTableViewCell.swift in Sources */,
 			);

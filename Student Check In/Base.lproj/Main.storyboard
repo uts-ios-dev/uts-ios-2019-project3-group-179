@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aE9-p3-dGC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JkE-2m-EWw">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                                     <navigationItem title="Don's Repository" id="6bi-Fe-7qg"/>
                                 </items>
                             </navigationBar>
-                            <searchBar contentMode="redraw" placeholder="Enter a title keyword" translatesAutoresizingMaskIntoConstraints="NO" id="3Yd-Tk-Zqn">
+                            <searchBar contentMode="redraw" placeholder="Enter month and or day or a title" translatesAutoresizingMaskIntoConstraints="NO" id="3Yd-Tk-Zqn">
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -231,7 +231,7 @@
                                     <action selector="taskTitleLabel:" destination="VvV-WU-fub" eventType="editingDidEnd" id="cUO-cZ-bxq"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ClZ-h8-Wy4">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ClZ-h8-Wy4">
                                 <rect key="frame" x="10" y="114" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -240,7 +240,7 @@
                                     <action selector="dueDateEditingBegan:" destination="TaB-AE-5mR" eventType="editingDidBegin" id="ejF-Za-040"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ibf-dN-4ed">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ibf-dN-4ed">
                                 <rect key="frame" x="10" y="154" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -863,18 +863,103 @@
         <!--Files-->
         <scene sceneID="KrM-Pn-Grb">
             <objects>
-                <viewController id="SyY-tl-h2t" sceneMemberID="viewController">
+                <viewController id="SyY-tl-h2t" customClass="FileViewController" customModule="Student_Check_In" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yfq-8k-j50">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Enter filename" translatesAutoresizingMaskIntoConstraints="NO" id="FSD-ec-7Rf">
+                                <rect key="frame" x="0.0" y="64" width="320" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-65-v08">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Don's Repository" id="dya-if-asN"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOo-cg-YB9">
+                                <rect key="frame" x="0.0" y="120" width="320" height="311"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fileCell" id="g9X-5H-u4K" customClass="FileTableViewCell" customModule="Student_Check_In" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9X-5H-u4K" id="Rhb-TY-Ay3">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqd-kG-Xrm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="something_or_an_image.jpg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjY-OI-G1x">
+                                                            <rect key="frame" x="5" y="13" width="230" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unY-ke-4R5">
+                                                            <rect key="frame" x="240" y="8" width="75" height="27.5"/>
+                                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                                            <state key="normal" title="Download">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="unY-ke-4R5" firstAttribute="top" secondItem="Tqd-kG-Xrm" secondAttribute="top" constant="8" id="48t-TS-KBi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="unY-ke-4R5" secondAttribute="trailing" constant="5" id="Wx7-1X-pYV"/>
+                                                        <constraint firstItem="JjY-OI-G1x" firstAttribute="leading" secondItem="Tqd-kG-Xrm" secondAttribute="leading" constant="5" id="Xes-pL-bCC"/>
+                                                        <constraint firstItem="JjY-OI-G1x" firstAttribute="centerY" secondItem="Tqd-kG-Xrm" secondAttribute="centerY" id="ZQK-iq-rAZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="unY-ke-4R5" secondAttribute="bottom" constant="8" id="pb3-wU-mLS"/>
+                                                        <constraint firstItem="unY-ke-4R5" firstAttribute="leading" secondItem="JjY-OI-G1x" secondAttribute="trailing" constant="5" id="s5j-Kt-1se"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Tqd-kG-Xrm" secondAttribute="trailing" id="AQH-H6-bEs"/>
+                                                <constraint firstItem="Tqd-kG-Xrm" firstAttribute="leading" secondItem="Rhb-TY-Ay3" secondAttribute="leading" id="Biz-Js-w4F"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tqd-kG-Xrm" secondAttribute="bottom" id="KBv-K4-eaM"/>
+                                                <constraint firstItem="Tqd-kG-Xrm" firstAttribute="top" secondItem="Rhb-TY-Ay3" secondAttribute="top" id="ZE5-lb-d8i"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fileDownloadButton" destination="unY-ke-4R5" id="ool-TN-A29"/>
+                                            <outlet property="fileNameLabel" destination="JjY-OI-G1x" id="l9H-Qf-h5X"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="SyY-tl-h2t" id="Bub-EC-igX"/>
+                                    <outlet property="delegate" destination="SyY-tl-h2t" id="jeg-u8-2Se"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FSD-ec-7Rf" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="25g-Az-Ty1"/>
+                            <constraint firstItem="FSD-ec-7Rf" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="5Of-S4-TdN"/>
+                            <constraint firstItem="Ljo-65-v08" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="FE5-Jj-JVd"/>
+                            <constraint firstItem="Uq6-eg-dlf" firstAttribute="trailing" secondItem="xOo-cg-YB9" secondAttribute="trailing" id="IHT-hW-ujM"/>
+                            <constraint firstItem="Ljo-65-v08" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="JgV-rS-2A5"/>
+                            <constraint firstItem="xOo-cg-YB9" firstAttribute="leading" secondItem="yfq-8k-j50" secondAttribute="leading" id="Mqc-Gz-V8u"/>
+                            <constraint firstItem="FSD-ec-7Rf" firstAttribute="top" secondItem="Ljo-65-v08" secondAttribute="bottom" id="Tkk-dJ-KWa"/>
+                            <constraint firstItem="xOo-cg-YB9" firstAttribute="top" secondItem="FSD-ec-7Rf" secondAttribute="bottom" id="bqU-6b-iED"/>
+                            <constraint firstItem="Uq6-eg-dlf" firstAttribute="bottom" secondItem="xOo-cg-YB9" secondAttribute="bottom" id="cNS-WC-iAe"/>
+                            <constraint firstItem="Ljo-65-v08" firstAttribute="top" secondItem="Uq6-eg-dlf" secondAttribute="top" id="tGD-CC-am9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Uq6-eg-dlf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Files" image="cloud_icon" id="kOf-vK-TOg"/>
+                    <connections>
+                        <outlet property="fileTableView" destination="xOo-cg-YB9" id="zG8-SL-maV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GJ-fz-at6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-581" y="1460"/>
+            <point key="canvasLocation" x="-579" y="1350"/>
         </scene>
     </scenes>
     <resources>
