@@ -188,6 +188,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Task" image="task_icon" id="9Mn-cf-dAc"/>
                     <connections>
+                        <outlet property="taskSearchBar" destination="3Yd-Tk-Zqn" id="Oez-vV-plT"/>
                         <outlet property="taskTableView" destination="1O0-UY-R7B" id="eHY-c3-BgR"/>
                         <segue destination="0oO-gm-L8T" kind="show" identifier="viewTaskSegue" id="Xja-o1-RAH"/>
                     </connections>
@@ -744,7 +745,7 @@
         <image name="task_icon" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dog-Sk-4S7"/>
+        <segue reference="0Ng-Hy-HGf"/>
         <segue reference="ybL-nQ-GbX"/>
     </inferredMetricsTieBreakers>
 </document>

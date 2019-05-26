@@ -82,7 +82,7 @@ class FirebaseManager {
         let taskReference = ref.child(Keys.Task.rawValue)
         taskReference.observe(.childAdded, with: { snapshot in
             if let task = snapshot.toTask() {
-                controller.tasks.append(task)
+                controller.addTask(task: task)
                 controller.taskTableView.reloadData()
             }
         })
