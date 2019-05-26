@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2367B8711026A990D50BA846 /* Pods_Student_Check_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51FEF9F14A50B0D9B3EA9D5D /* Pods_Student_Check_In.framework */; };
+		850F0056229A2BD500D797BD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850F0055229A2BD500D797BD /* LoginViewController.swift */; };
+		8587C22C229A2D550007EC19 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587C22B229A2D550007EC19 /* RegisterViewController.swift */; };
 		E168BAFDCBE8A0D535A5346D /* Pods_Student_Check_InUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B7BCFF8F229D2A4AA344D0 /* Pods_Student_Check_InUITests.framework */; };
 		F3910E5D7D4E1984F9B3B873 /* Pods_Student_Check_InTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */; };
 		F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092EFF2291475B00F7C4DC /* HomeViewController.swift */; };
@@ -61,6 +63,8 @@
 		51FEF9F14A50B0D9B3EA9D5D /* Pods_Student_Check_In.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_Check_In.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8199420A0DD891D56DB25F2B /* Pods-Student Check In.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check In.release.xcconfig"; path = "Target Support Files/Pods-Student Check In/Pods-Student Check In.release.xcconfig"; sourceTree = "<group>"; };
 		83CECA31CFEBFB485A089BB2 /* Pods-Student Check InTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InTests.debug.xcconfig"; path = "Target Support Files/Pods-Student Check InTests/Pods-Student Check InTests.debug.xcconfig"; sourceTree = "<group>"; };
+		850F0055229A2BD500D797BD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8587C22B229A2D550007EC19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = "/Users/Jacky/Desktop/uts-ios-2019-project3-group-179/Student Check In/Controllers/RegisterViewController.swift"; sourceTree = "<absolute>"; };
 		BB057EA6FEDE0F11B0FCE914 /* Pods-Student Check InUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InUITests.release.xcconfig"; path = "Target Support Files/Pods-Student Check InUITests/Pods-Student Check InUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_Check_InTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6092EFF2291475B00F7C4DC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Student Check In/Controllers/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -168,10 +172,12 @@
 			children = (
 				F6AF740B2296E5F2008E6631 /* TaskViewController.swift */,
 				F6092EFF2291475B00F7C4DC /* HomeViewController.swift */,
+				8587C22B229A2D550007EC19 /* RegisterViewController.swift */,
 				F658A8D2229425A600ECA426 /* AddNoteViewController.swift */,
 				F6FE616D229577B3007BF170 /* ViewNoteViewController.swift */,
 				F64FE104229908D100A75316 /* AddTaskViewController.swift */,
 				F64FE10E229951B200A75316 /* ViewTaskViewController.swift */,
+				850F0055229A2BD500D797BD /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -513,12 +519,14 @@
 				F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */,
 				F658A8D822943FC000ECA426 /* Keys.swift in Sources */,
 				F64FE10B22993D5900A75316 /* Util.swift in Sources */,
+				850F0056229A2BD500D797BD /* LoginViewController.swift in Sources */,
 				F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */,
 				F64FE105229908D100A75316 /* AddTaskViewController.swift in Sources */,
 				F658A8D12293F23A00ECA426 /* FirebaseObserverManager.swift in Sources */,
 				F6FE616C2294E3FA007BF170 /* CardView.swift in Sources */,
 				F64FE10F229951B200A75316 /* ViewTaskViewController.swift in Sources */,
 				F6AF740C2296E5F2008E6631 /* TaskViewController.swift in Sources */,
+				8587C22C229A2D550007EC19 /* RegisterViewController.swift in Sources */,
 				F6D0C6EC228FF7C500D712A9 /* ViewController.swift in Sources */,
 				F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */,
 				F6AF740A2296E595008E6631 /* Note.swift in Sources */,
