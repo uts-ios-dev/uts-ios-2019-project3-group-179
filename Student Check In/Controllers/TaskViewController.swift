@@ -38,6 +38,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         taskTableView.estimatedRowHeight = CGFloat(95)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewTaskSegue", let rowTapped = taskTableView.indexPathForSelectedRow?.row {
+            let destination = segue.destination as! ViewTaskViewController
+            destination.task = filteredTasks[rowTapped];
+            taskTableView.deselectRow(at: IndexPath(row: rowTapped, section: 0), animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredTasks.count
     }
@@ -62,27 +70,27 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return cell
     }
-    
-    /// Handles the cell tap on the task tableview
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewTaskController = storyboard.instantiateViewController(withIdentifier: "ViewTaskController") as! ViewTaskViewController
-        viewTaskController.task = filteredTasks[indexPath.row]
-        self.present(viewTaskController, animated: true, completion: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+        
     /// Updates the task that was changed in the database
     ///
     /// - Parameter task: the task that was updated
     func updateTask(task: Task) {
+        //Update the original source of tasks
         for index in 0...tasks.count - 1 {
             if tasks[index].id! == task.id! {
                 tasks[index] = task
+                break
+            }
+        }
+        //Update the respective row in the task table
+        for index in 0...filteredTasks.count - 1 {
+            if filteredTasks[index].id! == task.id! {
+                filteredTasks[index] = task
                 taskTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                 break
             }
         }
+
     }
     
     /// Adds a task to data source and the 
@@ -127,10 +135,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let searchTextSplit = searchText.split(separator: " ")
                     //Filter by specific date and month
                     if searchTextSplit.count == 2 {
-                        print("Component 0 is \(searchTextSplit[0])")
-                        print("Component 1 is \(searchTextSplit[1])")
-                        print("Task date is \(taskDate)")
-                        print("Task month is \(taskMonth)")
                         if (searchTextSplit[0] == taskDate || searchTextSplit[0] == taskMonth)
                             && (searchTextSplit[1] == taskDate || searchTextSplit[1] == taskMonth) {
                                 filteredTasks.append(task)

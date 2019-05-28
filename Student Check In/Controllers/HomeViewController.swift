@@ -36,6 +36,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         progressBar.cycleColors = [UIColor.red]
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewNoteSegue", let rowTapped = notesTableView.indexPathForSelectedRow?.row {
+            let destination = segue.destination as! ViewNoteViewController
+            destination.note = filteredNotes[rowTapped]
+            notesTableView.deselectRow(at: IndexPath(row: rowTapped, section: 0), animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredNotes.count
     }
@@ -52,17 +60,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         filterByCriteria(searchText: searchText)
     }
     
-    
-    //This method is used to handle the table view item taps
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        /* create a new viewNoteViewController and pass the note selected to that controller */
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewNoteViewController = storyboard.instantiateViewController(withIdentifier: "ViewNoteViewController") as! ViewNoteViewController
-        viewNoteViewController.note = notes[indexPath.row]
-        self.present(viewNoteViewController, animated: true, completion: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
     
     /// Adds a note to the data source and the filter list
     ///
@@ -81,12 +78,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     ///
     /// - Parameter updateNote: the note that was changed
     func updateNote(_ updateNote: Note) {
-        //Track the index so we know which row to update in the table view
+        //Update the original source of notes
         for index in 0...notes.count - 1 {
+            //Update the data source that doesn't get filtered
             if notes[index].id! == updateNote.id! {
                 notes[index] = updateNote
-                notesTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                 break
+            }
+        }
+        //Update the respective row in the tableview
+        for index in 0...filteredNotes.count - 1 {
+            if filteredNotes[index].id! == updateNote.id! {
+                filteredNotes[index] = updateNote
+                notesTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
             }
         }
     }

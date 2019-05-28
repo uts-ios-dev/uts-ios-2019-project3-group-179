@@ -148,6 +148,7 @@
                                             <outlet property="taskDueDateLabel" destination="zRh-bJ-ugM" id="fwV-Zi-sAm"/>
                                             <outlet property="taskDueTimeLabel" destination="A5g-DQ-2RU" id="LiU-D9-iBW"/>
                                             <outlet property="taskTitleLabel" destination="f4C-dv-97d" id="3jk-Yc-7Ja"/>
+                                            <segue destination="0oO-gm-L8T" kind="show" identifier="viewTaskSegue" id="JYw-6n-kxa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -190,7 +191,6 @@
                     <connections>
                         <outlet property="taskSearchBar" destination="3Yd-Tk-Zqn" id="Oez-vV-plT"/>
                         <outlet property="taskTableView" destination="1O0-UY-R7B" id="eHY-c3-BgR"/>
-                        <segue destination="0oO-gm-L8T" kind="show" identifier="viewTaskSegue" id="Xja-o1-RAH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDu-1z-5Ux" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,6 +499,7 @@
                                                     <outlet property="noteDescriptionLabel" destination="eOV-h3-WEr" id="IS6-mF-zLv"/>
                                                     <outlet property="noteTimeCreatedLabel" destination="FdA-zi-Gln" id="EJk-mZ-6Uq"/>
                                                     <outlet property="noteTitleLabel" destination="fWg-pw-j4q" id="HxP-U4-eWh"/>
+                                                    <segue destination="miJ-DD-nUd" kind="show" identifier="viewNoteSegue" id="hef-kx-ObS"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -559,7 +560,6 @@
                         <outlet property="noteSearchBar" destination="XkM-a6-Wh2" id="PxR-qK-kXH"/>
                         <outlet property="notesTableView" destination="1tF-si-NUK" id="DG0-2b-eWk"/>
                         <outlet property="progressBar" destination="S14-fA-FqG" id="tUV-Bw-axB"/>
-                        <segue destination="miJ-DD-nUd" kind="show" identifier="viewNoteSegue" id="cgK-i1-7oT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzb-3Y-XeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -974,6 +974,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Ng-Hy-HGf"/>
-        <segue reference="ybL-nQ-GbX"/>
+        <segue reference="FlX-qn-Clg"/>
     </inferredMetricsTieBreakers>
 </document>

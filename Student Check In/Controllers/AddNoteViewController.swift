@@ -16,15 +16,15 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var noteDescriptionTextView: UITextView!
     
     var firebaseRepoManager: FirebaseRepoManager!
-    var sendingController: ViewNoteViewController?
     var note: Note?
+    var sendingController: ViewNoteViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseRepoManager = FirebaseRepoManager()
         noteTitleTextField.delegate = self
         noteDescriptionTextView.delegate = self
-    
+        
         /* disable it in the start so that it can be enabled once there is text in both the title and description */
         addButton.isEnabled = false
         //If note is not nil then the user is editing a note
@@ -50,9 +50,10 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             note!.title = title
             note!.description = description
             firebaseRepoManager.updateNote(note: note!)
-            sendingController?.note = note!
+            sendingController!.note = note!
         }
         self.dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
