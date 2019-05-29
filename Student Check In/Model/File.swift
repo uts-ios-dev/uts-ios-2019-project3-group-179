@@ -1,4 +1,4 @@
-//
+//  This is a wrapper struct which encapsulates the file details`
 //  File.swift
 //  Student Check In
 //
@@ -20,6 +20,11 @@ struct File {
         self.referenceToFile = referenceToFile
     }
     
+    /// Creates a file without an id (should be used to create initial file)
+    ///
+    /// - Parameters:
+    ///   - fileName: <#fileName description#>
+    ///   - referenceToFile: <#referenceToFile description#>
     init(fileName: String, referenceToFile: String) {
         self.fileName = fileName
         self.referenceToFile = referenceToFile

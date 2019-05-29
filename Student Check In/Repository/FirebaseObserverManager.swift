@@ -26,7 +26,6 @@ extension DataSnapshot {
         return nil
     }
     
-    
     /// Converts a snapshot to a task
     ///
     /// - Returns: a task object
