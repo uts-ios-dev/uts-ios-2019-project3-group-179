@@ -1,4 +1,4 @@
-//
+//  This struct is a wrapped struct which encapsulates the task internal details
 //  Task.swift
 //  Student Check In
 //
@@ -16,6 +16,13 @@ struct Task {
     var dueTime: String
     var description: String
     
+    /// Creates an initial task without the id (should be used for initial task creation)
+    ///
+    /// - Parameters:
+    ///   - title: the title of task
+    ///   - dueDate: the due date of the task
+    ///   - dueTime: the due time of the task
+    ///   - description: the description of the task
     init(title: String, dueDate: String, dueTime: String, description: String) {
         self.title = title
         self.dueDate = dueDate

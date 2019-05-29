@@ -1,4 +1,4 @@
-//
+//  This is a note struct which encapsluates the note details
 //  Note.swift
 //  Student Check In
 //
@@ -22,6 +22,13 @@ struct Note {
         self.timeCreated = timeCreated
     }
     
+    
+    /// This constructor should be called to create an initial note id can be set later
+    ///
+    /// - Parameters:
+    ///   - title: title of the note
+    ///   - description: description of the note
+    ///   - timeCreated: time created of the note
     init(title: String, description: String, timeCreated: String) {
         self.title = title
         self.description = description
