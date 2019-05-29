@@ -26,7 +26,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseManager = FirebaseManager()
-        firebaseManager.attachNotesObserverTo(controller: self)
+        firebaseManager.attachNotes ObserverTo(controller: self)
         noteSearchBar.delegate = self
         //Setup the indeterminate progressbar
         progressBar.sizeToFit()

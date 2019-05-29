@@ -231,7 +231,7 @@
                                     <action selector="taskTitleLabel:" destination="VvV-WU-fub" eventType="editingDidEnd" id="cUO-cZ-bxq"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ClZ-h8-Wy4">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ClZ-h8-Wy4">
                                 <rect key="frame" x="10" y="114" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -240,7 +240,7 @@
                                     <action selector="dueDateEditingBegan:" destination="TaB-AE-5mR" eventType="editingDidBegin" id="ejF-Za-040"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ibf-dN-4ed">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a due time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ibf-dN-4ed">
                                 <rect key="frame" x="10" y="154" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -973,7 +973,7 @@
         <image name="task_icon" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ng-Hy-HGf"/>
-        <segue reference="FlX-qn-Clg"/>
+        <segue reference="Dog-Sk-4S7"/>
+        <segue reference="ybL-nQ-GbX"/>
     </inferredMetricsTieBreakers>
 </document>
