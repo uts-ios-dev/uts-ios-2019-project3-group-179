@@ -26,6 +26,10 @@ extension DataSnapshot {
         return nil
     }
     
+    
+    /// Converts a snapshot to a task
+    ///
+    /// - Returns: a task object
     func toTask() -> Task? {
         let taskAsDictionary = self.value as! [String: AnyObject]
         let id = taskAsDictionary["id"] as! String
