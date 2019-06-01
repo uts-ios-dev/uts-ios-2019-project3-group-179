@@ -24,7 +24,7 @@ struct Task {
     ///   - dueDate: the due date of the task
     ///   - dueTime: the due time of the task
     ///   - description: the description of the task
-    init(title: String, dueDate: String, dueTime: String, description: String) {
+    init(title: String, dueDate: String, dueTime: String, description: String, isCompleted: String) {
         self.title = title
         self.dueDate = dueDate
         self.dueTime = dueTime
@@ -32,13 +32,13 @@ struct Task {
         self.isCompleted = "No"
     }
     
-    init(id: String, title: String, dueDate: String, dueTime: String, description: String) {
+    init(id: String, title: String, dueDate: String, dueTime: String, description: String, isCompleted: String) {
         self.id = id
         self.title = title
         self.dueDate = dueDate
         self.dueTime = dueTime
         self.description = description
-        self.isCompleted = "No"
+        self.isCompleted = isCompleted
     }
     
     mutating func toDictionary() -> NSDictionary {

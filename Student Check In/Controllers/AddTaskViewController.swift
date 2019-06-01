@@ -84,7 +84,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         let dueTime = taskDueTimeTextField.text!
         let description = taskDescriptionTextView.text!
         if addButton.title == "Add" { //The user is adding a task
-            var task = Task(title: title, dueDate: dueDate, dueTime: dueTime, description: description)
+            var task = Task(title: title, dueDate: dueDate, dueTime: dueTime, description: description, isCompleted: "No")
             firebaseRepoManager.addTask(task: &task)
         } else { //the user is editing a task
             task!.title = title

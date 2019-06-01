@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Student Check In/Controllers/TaskViewController.swift"
-            timestampString = "581077291.041838"
+            timestampString = "581078509.297956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -22,16 +22,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Student Check In/Controllers/TaskViewController.swift"
-            timestampString = "581077291.04199"
+            filePath = "Student Check In/CellView/TaskTableViewCell.swift"
+            timestampString = "581078509.2980469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "setSelected(_:animated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

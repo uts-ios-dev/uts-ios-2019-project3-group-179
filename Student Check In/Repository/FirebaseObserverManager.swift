@@ -36,8 +36,9 @@ extension DataSnapshot {
         let dueDate = taskAsDictionary["dueDate"] as! String
         let dueTime = taskAsDictionary["dueTime"] as! String
         let description = taskAsDictionary["description"] as! String
-        if !id.isEmpty && !title.isEmpty && !dueDate.isEmpty && !dueTime.isEmpty && !description.isEmpty {
-            return Task(id: id, title: title, dueDate: dueDate, dueTime: dueTime, description: description)
+        let isCompleted = taskAsDictionary["isCompleted"] as! String
+        if !id.isEmpty && !title.isEmpty && !dueDate.isEmpty && !dueTime.isEmpty && !description.isEmpty && !isCompleted.isEmpty {
+            return Task(id: id, title: title, dueDate: dueDate, dueTime: dueTime, description: description, isCompleted: isCompleted)
         }
         return nil
     }

@@ -28,7 +28,7 @@ class TaskTableViewCell: UITableViewCell {
             taskBackground.backgroundColor = UIColor.groupTableViewBackground
             print("Selected...")
         } else {
-            contentView.backgroundColor = UIColor.red
+            contentView.backgroundColor = completionIndicatorView.tintColor
             
         }
     }

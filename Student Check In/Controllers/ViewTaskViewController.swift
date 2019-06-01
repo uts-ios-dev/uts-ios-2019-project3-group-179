@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MDCFloatingButton
 
 class ViewTaskViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class ViewTaskViewController: UIViewController {
     @IBOutlet weak var taskDueDateLabel: UILabel!
     @IBOutlet weak var taskDueTimeLabel: UILabel!
     @IBOutlet weak var taskDescriptionLabel: UITextViewFixed!
+    @IBOutlet weak var taskCompleteButton: MDCFloatingButton!
     
     var task: Task?
     
@@ -45,6 +47,13 @@ class ViewTaskViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func taskCompleteButtonTapped(_ sender: MDCFloatingButton) {
+        if let task = self.task {
+            self.task?.isCompleted = "Yes"
+            FirebaseRepoManager().updateTask(task: &self.task!)
+        }
     }
     
 }

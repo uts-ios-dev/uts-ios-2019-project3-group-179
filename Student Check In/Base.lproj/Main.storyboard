@@ -374,6 +374,9 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="done_icon"/>
+                                <connections>
+                                    <action selector="taskCompleteButtonTapped:" destination="0oO-gm-L8T" eventType="touchUpInside" id="Gcf-1w-RBo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -407,6 +410,7 @@
                         <viewLayoutGuide key="safeArea" id="iji-OP-1Yc"/>
                     </view>
                     <connections>
+                        <outlet property="taskCompleteButton" destination="MCG-pZ-gS1" id="T2a-S5-JjR"/>
                         <outlet property="taskDescriptionLabel" destination="7hH-od-0Em" id="leU-vn-acp"/>
                         <outlet property="taskDueDateLabel" destination="3e3-Mm-nfE" id="SrQ-qj-sfa"/>
                         <outlet property="taskDueTimeLabel" destination="ECB-wo-spb" id="AN1-dN-NRZ"/>
@@ -1015,7 +1019,7 @@
         <image name="clock_icon" width="48" height="48"/>
         <image name="cloud_icon" width="36" height="36"/>
         <image name="create_icon" width="36" height="36"/>
-        <image name="done_icon" width="24" height="24"/>
+        <image name="done_icon" width="36" height="36"/>
         <image name="home_icon" width="36" height="36"/>
         <image name="task_icon" width="36" height="36"/>
     </resources>
