@@ -15,6 +15,7 @@ struct Task {
     var dueDate: String
     var dueTime: String
     var description: String
+    var isCompleted: String
     
     /// Creates an initial task without the id (should be used for initial task creation)
     ///
@@ -28,6 +29,7 @@ struct Task {
         self.dueDate = dueDate
         self.dueTime = dueTime
         self.description = description
+        self.isCompleted = "No"
     }
     
     init(id: String, title: String, dueDate: String, dueTime: String, description: String) {
@@ -36,6 +38,7 @@ struct Task {
         self.dueDate = dueDate
         self.dueTime = dueTime
         self.description = description
+        self.isCompleted = "No"
     }
     
     mutating func toDictionary() -> NSDictionary {
@@ -43,7 +46,8 @@ struct Task {
                                            "title": self.title,
                                            "dueDate": self.dueDate,
                                            "dueTime": self.dueTime,
-                                           "description": self.description]
+                                           "description": self.description,
+                                            "isCompleted": self.isCompleted]
         return dictonary as NSDictionary
     }
     

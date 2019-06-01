@@ -18,7 +18,7 @@ extension Date {
     
     func currentTime() -> String {
         let dateFormatter = DateFormatter();
-        dateFormatter.dateFormat = Util.time_format
+        dateFormatter.dateFormat = Util.short_date_format + " " + Util.time_format
         return dateFormatter.string(from: self)
     }
     
@@ -65,15 +65,51 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.taskDueTimeLabel.text = task.dueTime
         cell.taskDescriptionLabel.text = task.description
         if let dateAsObject = dateFormatter.date(from: task.dueDate) {
-            //Redefine the format of the date formatter to a shorted format
+            let calendar = Calendar.current
+            var dueDateComponents = DateComponents()
+            //Extract the year, month and day components from the object
+            dueDateComponents.year = calendar.component(.year, from: dateAsObject)
+            dueDateComponents.month = calendar.component(.month, from: dateAsObject)
+            dueDateComponents.day = calendar.component(.day, from: dateAsObject)
+            
+            dateFormatter.dateFormat = Util.time_format
+            if let timeAsObject = dateFormatter.date(from: task.dueTime) {
+                dueDateComponents.hour = calendar.component(.hour, from: timeAsObject)
+                dueDateComponents.minute = calendar.component(.minute, from: timeAsObject)
+            }
+            
+            //Reconstruct the date with the hour and minutes
+            //This will be needed for the status checking
+            let dueDate = calendar.date(from: dueDateComponents)
+            
+            //Redefine the format of the date formatter to a shorter format
             dateFormatter.dateFormat = Util.short_date_format
             //Store the formatted date string here
             let dateAsString = dateFormatter.string(from: dateAsObject)
             cell.taskDueDateLabel.text = dateAsString
-        } else {
+            //Set the task status color according to three rules
+            //Green - complete
+            //Orange - pending
+            //Red - overdue
+            if task.isCompleted == "Yes" {
+                cell.completionIndicatorView.backgroundColor = .green
+            } else {
+                //Calculate the difference from the due date to today
+                let differenceInSeconds = dueDate!.timeIntervalSince1970 - Date().timeIntervalSince1970
+                //Divide difference by 60 to get the difference in minutes
+                let minutes: Double = differenceInSeconds / Double(60)
+                if minutes < 0 { //If the task is overdue
+                    cell.completionIndicatorView.backgroundColor = .red
+                } else {
+                    cell.completionIndicatorView.backgroundColor = .orange
+                }
+            }
             
+        } else {
+            //if unable to format just use what is stored
             cell.taskDueDateLabel.text = task.dueDate
         }
+        
         return cell
     }
         

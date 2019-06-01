@@ -13,7 +13,7 @@ class Util {
     
     static let long_date_format = "dd MMMM yyyy"
     static let short_date_format = "dd MMM"
-    static let time_format = "hh:mm a"
+    static let time_format = "hh:mma"
     static let placeholderTextColor = UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)
     
     static func areAnyTextFieldsEmpty(textFields: [UITextField]) -> Bool {
