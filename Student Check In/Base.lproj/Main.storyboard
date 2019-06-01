@@ -158,10 +158,11 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2GA-oG-Add" customClass="MDCFloatingButton">
-                                <rect key="frame" x="268" y="379" width="36" height="36"/>
+                                <rect key="frame" x="256" y="367" width="48" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="2GA-oG-Add" secondAttribute="height" multiplier="1:1" id="srZ-ej-1g9"/>
+                                    <constraint firstAttribute="width" constant="48" id="inq-oS-iBA"/>
+                                    <constraint firstAttribute="height" constant="48" id="vkt-Pb-sRz"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="add_icon"/>
@@ -179,8 +180,8 @@
                             <constraint firstItem="kPm-eq-8ky" firstAttribute="trailing" secondItem="kof-Nc-rVF" secondAttribute="trailing" id="MD4-f6-VpH"/>
                             <constraint firstItem="3Yd-Tk-Zqn" firstAttribute="trailing" secondItem="kof-Nc-rVF" secondAttribute="trailing" id="NKd-NJ-vfR"/>
                             <constraint firstItem="kof-Nc-rVF" firstAttribute="trailing" secondItem="1O0-UY-R7B" secondAttribute="trailing" id="NV1-Tr-cYJ"/>
-                            <constraint firstItem="kof-Nc-rVF" firstAttribute="bottom" secondItem="2GA-oG-Add" secondAttribute="bottom" constant="16" id="UJl-L9-Zsi"/>
-                            <constraint firstAttribute="trailing" secondItem="2GA-oG-Add" secondAttribute="trailing" constant="16" id="cKO-o1-5uA"/>
+                            <constraint firstItem="kof-Nc-rVF" firstAttribute="trailing" secondItem="2GA-oG-Add" secondAttribute="trailing" constant="16" id="OrY-Dn-ThT"/>
+                            <constraint firstItem="kof-Nc-rVF" firstAttribute="bottom" secondItem="2GA-oG-Add" secondAttribute="bottom" constant="16" id="RkI-D0-SFX"/>
                             <constraint firstItem="1O0-UY-R7B" firstAttribute="leading" secondItem="oot-fk-SDw" secondAttribute="leading" id="ksY-T6-gni"/>
                             <constraint firstItem="kPm-eq-8ky" firstAttribute="leading" secondItem="kof-Nc-rVF" secondAttribute="leading" id="owN-pj-hgD"/>
                             <constraint firstItem="kof-Nc-rVF" firstAttribute="bottom" secondItem="1O0-UY-R7B" secondAttribute="bottom" id="qyq-J8-b55"/>
@@ -195,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDu-1z-5Ux" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-549" y="-64"/>
+            <point key="canvasLocation" x="-549.375" y="-65"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="Vhl-pY-3ij">
@@ -525,8 +526,12 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntf-5f-6LC" customClass="MDCFloatingButton">
-                                <rect key="frame" x="268" y="379" width="36" height="36"/>
+                                <rect key="frame" x="268" y="379" width="24" height="24"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="TG5-xU-5Ai"/>
+                                    <constraint firstAttribute="height" constant="48" id="YAX-LE-P3s"/>
+                                </constraints>
                                 <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="create_icon"/>
                                 <connections>
