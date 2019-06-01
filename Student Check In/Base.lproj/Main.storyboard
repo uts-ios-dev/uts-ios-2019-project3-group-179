@@ -20,7 +20,9 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPm-eq-8ky">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
-                                    <navigationItem title="Don's Repository" id="6bi-Fe-7qg"/>
+                                    <navigationItem title="Don's Repository" id="6bi-Fe-7qg">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="sQn-Je-v0j"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <searchBar contentMode="redraw" placeholder="Enter month and or day or a title" translatesAutoresizingMaskIntoConstraints="NO" id="3Yd-Tk-Zqn">
@@ -975,6 +977,7 @@
                     <tabBarItem key="tabBarItem" title="Files" image="cloud_icon" id="kOf-vK-TOg"/>
                     <connections>
                         <outlet property="addPhotoButton" destination="tlH-Jg-axS" id="ox5-Wq-0rw"/>
+                        <outlet property="fileSearchBar" destination="FSD-ec-7Rf" id="x3E-pH-kfU"/>
                         <outlet property="fileTableView" destination="xOo-cg-YB9" id="zG8-SL-maV"/>
                     </connections>
                 </viewController>

@@ -9,10 +9,11 @@
 import UIKit
 import MaterialComponents.MDCContainerScheme
 
-class FileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var addPhotoButton: MDCFloatingButton!
     @IBOutlet weak var fileTableView: UITableView!
+    @IBOutlet weak var fileSearchBar: UISearchBar!
     
     var imagePicker: UIImagePickerController!
     
@@ -25,6 +26,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseManager().attachFilesObserverTo(controller: self)
+        fileSearchBar.delegate = self
         DispatchQueue.main.async {
             self.imagePicker = UIImagePickerController()
         }
@@ -66,6 +68,10 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let selectedImageUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
             showNameDialog(selectedImageUrl: selectedImageUrl)
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterByCritera(searchText: searchText)
     }
     
     /// Adds a file to the original source of data and the filered source
@@ -134,6 +140,34 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
             textfield.placeholder = "Enter file name"
         })
         present(inputFileNameController, animated: true, completion: nil)
+    }
+    
+    /// Filters the files tableview by the search text
+    ///
+    /// - Parameter searchText: the text to search
+    func filterByCritera(searchText: String) {
+        //Remove all the files from the list and prepare to filter
+        filteredFiles.removeAll()
+        if (!searchText.isEmpty) {
+            for file in files {
+                if isSearchTextInFileName(file: file, searchText: searchText) {
+                    filteredFiles.append(file)
+                }
+            }
+        } else {
+            //Just set the filter back to the original source
+            filteredFiles = files
+        }
+        fileTableView.reloadData()
+    }
+    
+    /// Determines if the search text is contained in the file name, ignoring case sensitivity
+    ///
+    /// - Parameters:
+    ///   - file: the file to check
+    ///   - searchText: the search text to check if it is in the file name
+    func isSearchTextInFileName(file: File, searchText: String) -> Bool {
+        return file.fileName.lowercased().contains(searchText.lowercased())
     }
     
 }
