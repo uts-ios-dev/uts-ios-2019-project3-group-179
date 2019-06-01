@@ -103,7 +103,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             UIImageWriteToSavedPhotosAlbum(imageData, nil, nil, nil)
                         }
                     } catch {
-                        
+                        //Add error handling here
                     }
                 } else {
                     print("An error has occured...")
