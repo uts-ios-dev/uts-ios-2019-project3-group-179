@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1O0-UY-R7B">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1O0-UY-R7B">
                                 <rect key="frame" x="0.0" y="120" width="320" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2im-Fu-tAq" id="awf-0x-9D4">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="94.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mk-VQ-BA7">
@@ -883,16 +883,6 @@
                                     <navigationItem title="Don's Repository" id="dya-if-asN"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="el5-c6-QBj" customClass="MDCFloatingButton">
-                                <rect key="frame" x="256" y="367" width="48" height="48"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="UNH-Ib-bTr"/>
-                                    <constraint firstAttribute="height" constant="48" id="dAY-Qg-GsD"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="add_icon"/>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOo-cg-YB9">
                                 <rect key="frame" x="0.0" y="120" width="320" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -951,26 +941,40 @@
                                     <outlet property="delegate" destination="SyY-tl-h2t" id="jeg-u8-2Se"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlH-Jg-axS" customClass="MDCFloatingButton">
+                                <rect key="frame" x="256" y="367" width="48" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="0sM-Qn-xfN"/>
+                                    <constraint firstAttribute="height" constant="48" id="9NC-Yz-m5B"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="add_icon"/>
+                                <connections>
+                                    <action selector="addPhotoButtonTapped:" destination="SyY-tl-h2t" eventType="touchUpInside" id="B5e-N2-Yt7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FSD-ec-7Rf" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="25g-Az-Ty1"/>
                             <constraint firstItem="FSD-ec-7Rf" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="5Of-S4-TdN"/>
                             <constraint firstItem="Ljo-65-v08" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="FE5-Jj-JVd"/>
+                            <constraint firstItem="Uq6-eg-dlf" firstAttribute="trailing" secondItem="tlH-Jg-axS" secondAttribute="trailing" constant="16" id="GNU-01-adL"/>
                             <constraint firstItem="Uq6-eg-dlf" firstAttribute="trailing" secondItem="xOo-cg-YB9" secondAttribute="trailing" id="IHT-hW-ujM"/>
                             <constraint firstItem="Ljo-65-v08" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="JgV-rS-2A5"/>
                             <constraint firstItem="xOo-cg-YB9" firstAttribute="leading" secondItem="yfq-8k-j50" secondAttribute="leading" id="Mqc-Gz-V8u"/>
                             <constraint firstItem="FSD-ec-7Rf" firstAttribute="top" secondItem="Ljo-65-v08" secondAttribute="bottom" id="Tkk-dJ-KWa"/>
                             <constraint firstItem="xOo-cg-YB9" firstAttribute="top" secondItem="FSD-ec-7Rf" secondAttribute="bottom" id="bqU-6b-iED"/>
                             <constraint firstItem="Uq6-eg-dlf" firstAttribute="bottom" secondItem="xOo-cg-YB9" secondAttribute="bottom" id="cNS-WC-iAe"/>
-                            <constraint firstItem="Uq6-eg-dlf" firstAttribute="trailing" secondItem="el5-c6-QBj" secondAttribute="trailing" constant="16" id="lrB-9k-1cw"/>
-                            <constraint firstItem="Uq6-eg-dlf" firstAttribute="bottom" secondItem="el5-c6-QBj" secondAttribute="bottom" constant="16" id="oxA-NU-mLl"/>
                             <constraint firstItem="Ljo-65-v08" firstAttribute="top" secondItem="Uq6-eg-dlf" secondAttribute="top" id="tGD-CC-am9"/>
+                            <constraint firstItem="Uq6-eg-dlf" firstAttribute="bottom" secondItem="tlH-Jg-axS" secondAttribute="bottom" constant="16" id="tdt-u4-bOr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uq6-eg-dlf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Files" image="cloud_icon" id="kOf-vK-TOg"/>
                     <connections>
+                        <outlet property="addPhotoButton" destination="tlH-Jg-axS" id="ox5-Wq-0rw"/>
                         <outlet property="fileTableView" destination="xOo-cg-YB9" id="zG8-SL-maV"/>
                     </connections>
                 </viewController>

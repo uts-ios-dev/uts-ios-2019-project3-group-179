@@ -23,10 +23,17 @@ struct File {
     /// Creates a file without an id (should be used to create initial file)
     ///
     /// - Parameters:
-    ///   - fileName: <#fileName description#>
-    ///   - referenceToFile: <#referenceToFile description#>
+    ///   - fileName: the name of the file
+    ///   - referenceToFile: the url to the file
     init(fileName: String, referenceToFile: String) {
         self.fileName = fileName
         self.referenceToFile = referenceToFile
+    }
+    
+    func toDictionary() -> NSDictionary {
+        let fileAsDictionary = ["id": self.id,
+                                "fileName": self.fileName,
+                                "fileUrl": self.referenceToFile ]
+        return fileAsDictionary as NSDictionary
     }
 }

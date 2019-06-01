@@ -7,26 +7,40 @@
 //
 
 import UIKit
+import MaterialComponents.MDCContainerScheme
 
-
-class FileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
-    
+    @IBOutlet weak var addPhotoButton: MDCFloatingButton!
     @IBOutlet weak var fileTableView: UITableView!
+    
+    var imagePicker: UIImagePickerController!
     
     //Store the original set of files
     var files: [File] = []
     //Store the files to display on the tableview
     var filteredFiles: [File] = []
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        filteredFiles.append(File(fileName: "123", referenceToFile: "123"))
-        filteredFiles.append(File(fileName: "123", referenceToFile: "123"))
-        filteredFiles.append(File(fileName: "123", referenceToFile: "123"))
-        filteredFiles.append(File(fileName: "123", referenceToFile: "123"))
-        filteredFiles.append(File(fileName: "123", referenceToFile: "123"))
+        FirebaseManager().attachFilesObserverTo(controller: self)
+        DispatchQueue.main.async {
+            self.imagePicker = UIImagePickerController()
+        }
+    }
+    
+    @IBAction func addPhotoButtonTapped(_ sender: MDCButton) {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        
+        present(imagePicker, animated: true, completion: nil)
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +50,9 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let file = filteredFiles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as! FileTableViewCell
+        let containerScheme = MDCContainerScheme()
+        containerScheme.colorScheme.primaryColor = .red
+        cell.fileDownloadButton.applyContainedTheme(withScheme: containerScheme)
         //Store the row as a tag so we know what to download
         cell.fileDownloadButton.tag = indexPath.row
         cell.fileDownloadButton.addTarget(self, action: #selector(downloadFile(sender:)), for: .touchUpInside)
@@ -44,17 +61,36 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let selectedImageUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+            showNameDialog(selectedImageUrl: selectedImageUrl)
+        }
+    }
+    
+    /// Adds a file to the original source of data and the filered source
+    ///
+    /// - Parameter file: the file to add to the sources
+    func addFile(file: File) {
+        files.append(file)
+        filteredFiles.append(file)
+    }
+    
     /// Downloads a file based on the button pressed
     ///
     /// - Parameter sender: the UIButton that was pressed
     @objc func downloadFile(sender: UIButton) {
-        let fileReference: String? = "https://www.coinstar.com/wp-content/uploads/2018/05/xamazon-cash-banner.jpg.pagespeed.ic.1zHHnBTAtf.jpg" //filteredFiles[sender.tag].referenceToFile
+        let fileReference: String? = filteredFiles[sender.tag].referenceToFile
         if let url = fileReference {
-            downloadFileFrom(url: url, name: "test", extensionType: "jpg")
+            downloadImageFrom(url: url)
         }
     }
     
-    func downloadFileFrom(url: String, name: String, extensionType: String) {
+    /// Downloads the file from the provided url and
+    ///
+    /// - Parameters:
+    ///   - url: the url to download the image from
+    func downloadImageFrom(url: String) {
         if let dataUrl = URL(string: url) {
             let sessionConfig = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfig)
@@ -70,13 +106,34 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         
                     }
                 } else {
-                    print("An error has occured... \(error?.localizedDescription)")
+                    print("An error has occured...")
                 }
             })
             downloadTask.resume()
         } else {
             //A file with the same name and extension alread yexists
         }
-    
     }
+    
+    /// Prompts the user with an alert dialog, asking for a file name
+    ///
+    /// - Parameter selectedImageUrl: the url of the selected image
+    func showNameDialog(selectedImageUrl: URL) {
+        let inputFileNameController = UIAlertController(title: "Enter file name", message: "Please enter the desired name for the file", preferredStyle: .alert)
+        let uploadAction = UIAlertAction(title: "Upload", style: .default, handler: {_ in
+            //First text field is the name input
+            if let fileName = inputFileNameController.textFields?[0].text {
+                FirebaseStorageManager().uploadImage(path: selectedImageUrl.absoluteString, fileName: fileName, controller: self)
+            }
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel , handler: nil)
+        inputFileNameController.addAction(uploadAction)
+        inputFileNameController.addAction(cancelAction)
+        inputFileNameController.addTextField(configurationHandler: { textfield in
+            textfield.placeholder = "Enter file name"
+        })
+        present(inputFileNameController, animated: true, completion: nil)
+    }
+    
 }

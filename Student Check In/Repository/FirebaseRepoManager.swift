@@ -49,6 +49,11 @@ class FirebaseRepoManager {
         updateTaskRef.setValue(task.toDictionary())
     }
     
+    func addFile(file: inout File) {
+        file.id = generateId(location: Keys.File.rawValue)
+        addValue(location: Keys.File.rawValue, value: file.toDictionary())
+    }
+    
     /// Pushes a value to the database
     ///
     /// - Parameters:

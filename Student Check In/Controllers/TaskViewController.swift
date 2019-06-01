@@ -16,6 +16,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func currentTime() -> String {
+        let dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = Util.time_format
+        return dateFormatter.string(from: self)
+    }
+    
 }
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {

@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MaterialComponents.MDCButton
 
 class FileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var fileNameLabel: UILabel!
-    @IBOutlet weak var fileDownloadButton: UIButton!
+    @IBOutlet weak var fileDownloadButton: MDCButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

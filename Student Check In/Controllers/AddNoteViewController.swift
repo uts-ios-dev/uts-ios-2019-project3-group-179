@@ -44,7 +44,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let title = noteTitleTextField.text!
         let description = noteDescriptionTextView.text!
         if addButton.title == "Add" { //User is creating a new note
-            var note = Note(title: title, description: description, timeCreated: "12:40")
+            var note = Note(title: title, description: description, timeCreated: Date().currentTime())
             firebaseRepoManager.addNote(note: &note)
         } else { //the user is updating a note
             note!.title = title

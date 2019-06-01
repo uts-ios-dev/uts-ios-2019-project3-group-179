@@ -42,6 +42,16 @@ extension DataSnapshot {
         return nil
     }
     
+    func toFile() -> File? {
+        let fileAsDictionary = self.value as! [String: AnyObject]
+        let id = fileAsDictionary["id"] as! String
+        let fileName = fileAsDictionary["fileName"] as! String
+        let referenceToFile = fileAsDictionary["fileUrl"] as! String
+        if !id.isEmpty && !fileName.isEmpty && !referenceToFile.isEmpty {
+            return File(id: id, fileName: fileName, referenceToFile: referenceToFile)
+        }
+        return nil
+    }
 }
 
 class FirebaseManager {
@@ -75,7 +85,6 @@ class FirebaseManager {
                 controller.updateNote(note)
             }
         })
-        
     }
     
     /// Attaches an observer to the task child in firebase and notifies the controller passed in when changes are made to the task child
@@ -95,8 +104,20 @@ class FirebaseManager {
                 controller.updateTask(task: task)
             }
         })
-        
-        
+    }
+    
+    /// Attaches an observer pointing at the file node in firebase and notifies the respective controller
+    ///
+    /// - Parameter controller: the controller to notify
+    func attachFilesObserverTo(controller: FileViewController) {
+        let filesReference = ref.child(Keys.File.rawValue)
+        filesReference.observe(.childAdded, with: { snapshot in
+            if let file = snapshot.toFile() {
+                controller.addFile(file: file)
+                controller.fileTableView.reloadData()
+            }
+        })
+
     }
     
 }
