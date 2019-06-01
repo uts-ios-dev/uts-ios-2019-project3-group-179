@@ -365,6 +365,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCG-pZ-gS1" customClass="MDCFloatingButton">
+                                <rect key="frame" x="256" y="416" width="48" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="1j0-yi-6YY"/>
+                                    <constraint firstAttribute="height" constant="48" id="x1f-h6-vCs"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="done_icon"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -375,6 +385,8 @@
                             <constraint firstItem="ECB-wo-spb" firstAttribute="leading" secondItem="3e3-Mm-nfE" secondAttribute="leading" id="AbX-7p-cDs"/>
                             <constraint firstItem="sW7-5g-7G7" firstAttribute="leading" secondItem="oHC-Rn-FRb" secondAttribute="leading" id="Foh-aY-Wnz"/>
                             <constraint firstItem="fKM-jU-TKA" firstAttribute="top" secondItem="iji-OP-1Yc" secondAttribute="top" id="Gjp-Gf-gEl"/>
+                            <constraint firstItem="iji-OP-1Yc" firstAttribute="bottom" secondItem="MCG-pZ-gS1" secondAttribute="bottom" constant="16" id="IXP-Bk-0Oq"/>
+                            <constraint firstItem="iji-OP-1Yc" firstAttribute="trailing" secondItem="MCG-pZ-gS1" secondAttribute="trailing" constant="16" id="J3l-eh-aAS"/>
                             <constraint firstAttribute="trailing" secondItem="fKM-jU-TKA" secondAttribute="trailing" id="L1M-Ja-p03"/>
                             <constraint firstItem="oHC-Rn-FRb" firstAttribute="leading" secondItem="iji-OP-1Yc" secondAttribute="leading" constant="10" id="Lu0-o9-qbX"/>
                             <constraint firstItem="ECB-wo-spb" firstAttribute="top" secondItem="3e3-Mm-nfE" secondAttribute="bottom" constant="10" id="Max-mH-pyI"/>
@@ -1003,11 +1015,12 @@
         <image name="clock_icon" width="48" height="48"/>
         <image name="cloud_icon" width="36" height="36"/>
         <image name="create_icon" width="36" height="36"/>
+        <image name="done_icon" width="24" height="24"/>
         <image name="home_icon" width="36" height="36"/>
         <image name="task_icon" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Dog-Sk-4S7"/>
-        <segue reference="ybL-nQ-GbX"/>
+        <segue reference="FlX-qn-Clg"/>
     </inferredMetricsTieBreakers>
 </document>
