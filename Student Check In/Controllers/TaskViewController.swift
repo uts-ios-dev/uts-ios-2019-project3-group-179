@@ -121,6 +121,15 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterByCriteria(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Resign the searchbar responder when done is clicked
+        searchBar.resignFirstResponder()
+    }
         
     /// Updates the task that was changed in the database
     ///
@@ -157,9 +166,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         taskTableView.reloadData()
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filterByCriteria(searchText: searchText)
-    }
 
     func filterByCriteria(searchText: String) {
         //Clear the tasks list to prepare for filtering

@@ -65,10 +65,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    //Handles the search text input / modification
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterByCriteria(searchText: searchText)
     }
     
+    ///Handles the done key being pressed
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Just resign the responder since the filter changes in realtime
+        searchBar.resignFirstResponder()
+    }
+    
+    //Handles the cancel search being pressed (the cross in the searchbar)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //Resign the searchbar
+        searchBar.resignFirstResponder()
+    }
     
     /// Adds a note to the data source and the filter list
     ///

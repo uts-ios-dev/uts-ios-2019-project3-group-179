@@ -74,6 +74,15 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterByCritera(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Resign the searchbar when the done button is tapped
+        searchBar.resignFirstResponder()
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let selectedImageUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
@@ -81,9 +90,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filterByCritera(searchText: searchText)
-    }
+    
     
     /// Adds a file to the original source of data and the filered source
     ///
