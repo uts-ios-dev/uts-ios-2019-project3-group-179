@@ -237,4 +237,8 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return -1
     }
     
+    func changeTitle(user: User) {
+        //change the navigation title?
+    }
+    
 }

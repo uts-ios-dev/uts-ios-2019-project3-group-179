@@ -38,10 +38,17 @@ class LoginViewController: UIViewController {
     func userLogin(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if error == nil {
+                self.performSegue(withIdentifier: "TabBarSegue", sender: nil)
                 print("Successfully logged in")
             } else {
                 print("Failed to sign in: ")
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TabBarSegue" {
+            let _ = segue.destination
         }
     }
 }

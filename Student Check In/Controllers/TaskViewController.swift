@@ -58,6 +58,8 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             let destination = segue.destination as! ViewTaskViewController
             destination.task = filteredTasks[rowTapped];
             taskTableView.deselectRow(at: IndexPath(row: rowTapped, section: 0), animated: true)
+        } else if segue.identifier == "LoginViewSegue" {
+            let _ = segue.destination as! LoginViewController
         }
     }
     
@@ -202,5 +204,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func isKeywordInTaskTitle(task: Task, keyword: String) -> Bool {
         return task.title.lowercased().contains(keyword.lowercased())
+    }
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        let auth = FirebaseAuthManager()
+        if auth.logout() {
+            performSegue(withIdentifier: "LoginViewSegue", sender: nil)
+        }
     }
 }

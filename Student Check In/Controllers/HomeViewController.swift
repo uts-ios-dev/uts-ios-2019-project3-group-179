@@ -41,6 +41,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let destination = segue.destination as! ViewNoteViewController
             destination.note = filteredNotes[rowTapped]
             notesTableView.deselectRow(at: IndexPath(row: rowTapped, section: 0), animated: true)
+        } else if segue.identifier == "LoginViewSegue" {
+            let _ = segue.destination as! LoginViewController
         }
     }
     
@@ -193,6 +195,4 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         return -1
     }
-    
-    
 }

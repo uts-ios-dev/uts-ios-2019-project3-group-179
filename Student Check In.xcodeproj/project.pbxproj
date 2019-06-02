@@ -10,6 +10,9 @@
 		2367B8711026A990D50BA846 /* Pods_Student_Check_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51FEF9F14A50B0D9B3EA9D5D /* Pods_Student_Check_In.framework */; };
 		850F0056229A2BD500D797BD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850F0055229A2BD500D797BD /* LoginViewController.swift */; };
 		8587C22C229A2D550007EC19 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587C22B229A2D550007EC19 /* RegisterViewController.swift */; };
+		85BBFB8722A3C33B003F1178 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BBFB8622A3C33B003F1178 /* User.swift */; };
+		85D56F5A22A3BD01006F080B /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D56F5922A3BD01006F080B /* FirebaseAuthManager.swift */; };
+		85D56F5C22A3BD1F006F080B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D56F5B22A3BD1F006F080B /* SplashViewController.swift */; };
 		E168BAFDCBE8A0D535A5346D /* Pods_Student_Check_InUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B7BCFF8F229D2A4AA344D0 /* Pods_Student_Check_InUITests.framework */; };
 		F3910E5D7D4E1984F9B3B873 /* Pods_Student_Check_InTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */; };
 		F6092F002291475B00F7C4DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6092EFF2291475B00F7C4DC /* HomeViewController.swift */; };
@@ -69,6 +72,9 @@
 		83CECA31CFEBFB485A089BB2 /* Pods-Student Check InTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InTests.debug.xcconfig"; path = "Target Support Files/Pods-Student Check InTests/Pods-Student Check InTests.debug.xcconfig"; sourceTree = "<group>"; };
 		850F0055229A2BD500D797BD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8587C22B229A2D550007EC19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		85BBFB8622A3C33B003F1178 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		85D56F5922A3BD01006F080B /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
+		85D56F5B22A3BD1F006F080B /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BB057EA6FEDE0F11B0FCE914 /* Pods-Student Check InUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student Check InUITests.release.xcconfig"; path = "Target Support Files/Pods-Student Check InUITests/Pods-Student Check InUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F54B3D499997122630B286B1 /* Pods_Student_Check_InTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_Check_InTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6092EFF2291475B00F7C4DC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Student Check In/Controllers/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -164,6 +170,7 @@
 				F658A8D02293F23A00ECA426 /* FirebaseObserverManager.swift */,
 				F658A8D422943E8300ECA426 /* FirebaseRepoManager.swift */,
 				F6778E19229A766A00962FD1 /* FirebaseStorageManager.swift */,
+				85D56F5922A3BD01006F080B /* FirebaseAuthManager.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 				F64FE10E229951B200A75316 /* ViewTaskViewController.swift */,
 				850F0055229A2BD500D797BD /* LoginViewController.swift */,
 				F6BB8E29229A5F1D00D4571C /* FileViewController.swift */,
+				85D56F5B22A3BD1F006F080B /* SplashViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				F6AF74122296E65D008E6631 /* Task.swift */,
 				F6AF74092296E595008E6631 /* Note.swift */,
 				F6BB8E27229A5C4C00D4571C /* File.swift */,
+				85BBFB8622A3C33B003F1178 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -532,6 +541,7 @@
 				F658A8D3229425A600ECA426 /* AddNoteViewController.swift in Sources */,
 				F658A8D822943FC000ECA426 /* Keys.swift in Sources */,
 				F64FE10B22993D5900A75316 /* Util.swift in Sources */,
+				85BBFB8722A3C33B003F1178 /* User.swift in Sources */,
 				850F0056229A2BD500D797BD /* LoginViewController.swift in Sources */,
 				F6FE616E229577B3007BF170 /* ViewNoteViewController.swift in Sources */,
 				F64FE105229908D100A75316 /* AddTaskViewController.swift in Sources */,
@@ -546,11 +556,13 @@
 				F6778E1A229A766A00962FD1 /* FirebaseStorageManager.swift in Sources */,
 				F6AF740A2296E595008E6631 /* Note.swift in Sources */,
 				F64FE10D2299503700A75316 /* UITextViewFixed.swift in Sources */,
+				85D56F5C22A3BD1F006F080B /* SplashViewController.swift in Sources */,
 				F6D0C6EA228FF7C500D712A9 /* AppDelegate.swift in Sources */,
 				F658A8D522943E8300ECA426 /* FirebaseRepoManager.swift in Sources */,
 				F6BB8E2A229A5F1D00D4571C /* FileViewController.swift in Sources */,
 				F6AF74132296E65D008E6631 /* Task.swift in Sources */,
 				F6092F0622917B5000F7C4DC /* NoteTableViewCell.swift in Sources */,
+				85D56F5A22A3BD01006F080B /* FirebaseAuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
