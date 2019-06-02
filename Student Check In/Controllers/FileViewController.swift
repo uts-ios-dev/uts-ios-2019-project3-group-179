@@ -40,6 +40,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DispatchQueue.main.async {
             self.imagePicker = UIImagePickerController()
         }
+        progressView.setProgress(0, animated: false)
     }
     
     @IBAction func addPhotoButtonTapped(_ sender: MDCButton) {
@@ -258,4 +259,10 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //change the navigation title?
     }
     
+    /// Updates the progress view
+    ///
+    /// - Parameter to: the progress value
+    func uploadProgressChanged(to: Float) {
+        progressView.setProgress(to, animated: false)
+    }
 }

@@ -1083,6 +1083,7 @@
                         <outlet property="fileTableView" destination="xOo-cg-YB9" id="zG8-SL-maV"/>
                         <outlet property="logoutButton" destination="r4k-Md-lzU" id="Wfh-xp-0fd"/>
                         <outlet property="progressBar" destination="CHx-6g-uPd" id="G4D-mv-F3v"/>
+                        <outlet property="progressView" destination="fqp-dj-6lm" id="xkA-f5-nc2"/>
                         <segue destination="aE9-p3-dGC" kind="show" identifier="logoutSegue" id="mQU-NJ-cxI"/>
                     </connections>
                 </viewController>

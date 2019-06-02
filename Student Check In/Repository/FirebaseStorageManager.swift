@@ -30,7 +30,7 @@ class FirebaseStorageManager {
         //Create a reference to the location we want to store this file
         let imageToUploadReference = storageRef.child(fileName)
         
-        imageToUploadReference.putFile(from: imageToUpload, metadata: nil, completion: { (metadata, error) in
+        let uploadTask = imageToUploadReference.putFile(from: imageToUpload, metadata: nil, completion: { (metadata, error) in
             //Retrieve the download url after upload is complete
             imageToUploadReference.downloadURL(completion: { (downloadUrl, error) in
                 guard let downloadUrl = downloadUrl else {
@@ -40,6 +40,17 @@ class FirebaseStorageManager {
                 var file = File(fileName: fileName, referenceToFile: downloadUrl.absoluteString)
                 FirebaseRepoManager().addFile(file: &file)
             })
+        })
+        controller.progressView.tintColor = .green
+        uploadTask.observe(.progress, handler: { snapshot in
+            let percentComplete = Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)
+            controller.uploadProgressChanged(to: Float(percentComplete))
+        })
+        
+        uploadTask.observe(.success, handler: { snapshot in
+            controller.uploadProgressChanged(to: Float(0))
+            print("Upload successful")
         })
     }
     
