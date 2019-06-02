@@ -63,6 +63,13 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        let auth = FirebaseAuthManager()
+        if auth.logout() {
+            performSegue(withIdentifier: "LoginViewSegue", sender: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredTasks.count
     }
@@ -211,10 +218,5 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     func isKeywordInTaskTitle(task: Task, keyword: String) -> Bool {
         return task.title.lowercased().contains(keyword.lowercased())
     }
-    @IBAction func logoutButtonTapped(_ sender: Any) {
-        let auth = FirebaseAuthManager()
-        if auth.logout() {
-            performSegue(withIdentifier: "LoginViewSegue", sender: nil)
-        }
-    }
+    
 }

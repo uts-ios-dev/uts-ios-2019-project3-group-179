@@ -29,7 +29,7 @@ extension UIToolbar {
     }
 }
 
-class AddTaskViewController: UIViewController, UITextViewDelegate {
+class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var taskTitleTextField: UITextField!
     @IBOutlet weak var taskDueDateTextField: UITextField!
@@ -51,6 +51,9 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         datePicker = UIDatePicker()
         addButton.isEnabled = false
         taskDescriptionTextView.delegate = self
+        taskTitleTextField.delegate = self
+        taskDueDateTextField.delegate = self
+        taskDueTimeTextField.delegate = self
         taskTitleTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         taskDueDateTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         taskDueTimeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -102,6 +105,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
     /// Handles the cancel button tapped when the datepicker is visible
     @objc func cancelTapped() {
         if taskDueDateTextField.isFirstResponder {
@@ -126,8 +130,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         //Set the value for the respective textfields
         if taskDueDateTextField.isFirstResponder {
             taskDueDateTextField.text = formattedValue
+            taskDueTimeTextField.becomeFirstResponder()
         } else if taskDueTimeTextField.isFirstResponder {
             taskDueTimeTextField.text = formattedValue
+            taskDescriptionTextView.becomeFirstResponder()
         }
         tryToEnableAddButton()
     }
@@ -152,6 +158,13 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
             taskDescriptionTextView.textColor = Util.placeholderTextColor
             textView.text = "Enter a description for the task"
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == taskTitleTextField {
+            taskDueDateTextField.becomeFirstResponder()
+        }
+        return true
     }
     
     func setUpPlaceHolderText() {

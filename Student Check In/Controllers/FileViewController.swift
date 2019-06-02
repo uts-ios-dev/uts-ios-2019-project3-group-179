@@ -15,6 +15,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var fileTableView: UITableView!
     @IBOutlet weak var fileSearchBar: UISearchBar!
     @IBOutlet weak var progressBar: MDCActivityIndicator!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     var imagePicker: UIImagePickerController!
     
@@ -49,6 +50,14 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         present(imagePicker, animated: true, completion: nil)
 
     }
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        let firebaseAuthManager = FirebaseAuthManager()
+        if firebaseAuthManager.logout() {
+            performSegue(withIdentifier: "logoutSegue", sender: nil)
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredFiles.count

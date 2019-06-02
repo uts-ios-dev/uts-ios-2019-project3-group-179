@@ -78,7 +78,7 @@ class FirebaseRepoManager {
     ///   - location: the root location to push the value
     ///   - value: the value to push
     func addValue(location: String, value: NSDictionary) {
-        let valueRef = ref.child(Auth.auth().currentUser!.uid).child(location)
+        let valueRef = ref.child(Keys.User.rawValue).child(Auth.auth().currentUser!.uid).child(location)
         valueRef.child(value["id"] as! String).setValue(value)
     }
     
@@ -88,7 +88,7 @@ class FirebaseRepoManager {
     ///   - location: the root location to delete at
     ///   - id: the id of the object to remove
     func deleteValue(location: String, id: String) {
-        let valueRef = ref.child(location)
+        let valueRef = ref.child(Keys.User.rawValue).child(Auth.auth().currentUser!.uid).child(location)
         valueRef.child(id).removeValue()
     }
     

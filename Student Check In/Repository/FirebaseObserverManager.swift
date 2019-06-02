@@ -69,15 +69,17 @@ extension DataSnapshot {
 class FirebaseManager {
 
     var ref: DatabaseReference!
+    var firebaseAuthManager: FirebaseAuthManager!
     
     init() {
-        ref = Database.database().reference()
+        firebaseAuthManager = FirebaseAuthManager()
+        ref = Database.database().reference().child(Keys.User.rawValue).child(firebaseAuthManager.getUserId()   )
     }
     
-    /// Attaches an observer to the notes child in firebase to notify the application of any changes such as notes added, removed or updated
+    /// Attaches observers to the respective notes child and notifies the database when changes occur on that child
     ///
-    /// - Parameter controller: the controller to notify of a change
-    func attachNotesObserverTo(controller: HomeViewController) {
+    /// - Parameter controller: the controller to notify
+    func attachNotesObserverTo(controller: HomeViewController)  {
         //Observer for notes being added to the database
         let notesReference = ref.child(Keys.Note.rawValue)
         notesReference.observe(.childAdded, with: { snapshot in
@@ -158,12 +160,12 @@ class FirebaseManager {
             }
         })
         
-        userReference.observe(.value, with: { snapshot in
+        /* userReference.observe(.value, with: { snapshot in
             if let user = snapshot.toUser() {
                 controller.changeTitle(user: user)
                 print("\(user.name)")
             }
-        })
+        }) */
 
     }
     

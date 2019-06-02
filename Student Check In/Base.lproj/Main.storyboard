@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MW6-zM-SEa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MW6-zM-SEa">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -254,7 +254,7 @@
                                 <rect key="frame" x="10" y="74" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="taskTitleLabel:" destination="VvV-WU-fub" eventType="editingDidEnd" id="cUO-cZ-bxq"/>
                                 </connections>
@@ -263,7 +263,7 @@
                                 <rect key="frame" x="10" y="114" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="dueDateEditingBegan:" destination="TaB-AE-5mR" eventType="editingDidBegin" id="ejF-Za-040"/>
                                 </connections>
@@ -272,7 +272,7 @@
                                 <rect key="frame" x="10" y="154" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="dueTimeEditingBegan:" destination="TaB-AE-5mR" eventType="editingDidBegin" id="5W7-wh-W9J"/>
                                     <action selector="dueTimeEditingBegan:" destination="TaB-AE-5mR" eventType="editingDidEnd" id="MAp-JW-rVF"/>
@@ -282,7 +282,7 @@
                                 <rect key="frame" x="10" y="194" width="300" height="276"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -462,7 +462,7 @@
                                     <navigationItem title="Don's Repository" id="BdW-IJ-z9Q">
                                         <barButtonItem key="leftBarButtonItem" title="Logout" id="vxR-7T-O4K">
                                             <connections>
-                                                <action selector="logoutButtonTapped:" destination="qrQ-O9-ltR" id="E2d-tF-0aF"/>
+                                                <action selector="logoutButtonTapped:" destination="gjn-mj-2c7" id="2w7-OP-CQT"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -613,9 +613,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="home" image="home_icon" id="PUS-LX-riz"/>
                     <connections>
+                        <outlet property="logoutButton" destination="vxR-7T-O4K" id="yOv-Vf-iwp"/>
                         <outlet property="noteSearchBar" destination="XkM-a6-Wh2" id="PxR-qK-kXH"/>
                         <outlet property="notesTableView" destination="1tF-si-NUK" id="DG0-2b-eWk"/>
                         <outlet property="progressBar" destination="S14-fA-FqG" id="tUV-Bw-axB"/>
+                        <segue destination="aE9-p3-dGC" kind="show" identifier="logoutSegue" id="l3D-d0-aoA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzb-3Y-XeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -719,13 +721,13 @@
                                 <rect key="frame" x="10" y="74" width="300" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WEO-u6-Wgu">
                                 <rect key="frame" x="10" y="114" width="300" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -951,7 +953,11 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Don's Repository" id="dya-if-asN">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="r4k-Md-lzU"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="r4k-Md-lzU">
+                                            <connections>
+                                                <action selector="logoutButtonTapped:" destination="SyY-tl-h2t" id="OOb-Ea-nLI"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1068,7 +1074,9 @@
                         <outlet property="addPhotoButton" destination="tlH-Jg-axS" id="ox5-Wq-0rw"/>
                         <outlet property="fileSearchBar" destination="FSD-ec-7Rf" id="x3E-pH-kfU"/>
                         <outlet property="fileTableView" destination="xOo-cg-YB9" id="zG8-SL-maV"/>
+                        <outlet property="logoutButton" destination="r4k-Md-lzU" id="Wfh-xp-0fd"/>
                         <outlet property="progressBar" destination="CHx-6g-uPd" id="G4D-mv-F3v"/>
+                        <segue destination="aE9-p3-dGC" kind="show" identifier="logoutSegue" id="mQU-NJ-cxI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GJ-fz-at6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1089,7 +1097,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3Me-2V-3IZ"/>
-        <segue reference="gDs-mb-QfG"/>
+        <segue reference="mQU-NJ-cxI"/>
         <segue reference="Dog-Sk-4S7"/>
         <segue reference="oQ0-Zj-q0J"/>
     </inferredMetricsTieBreakers>

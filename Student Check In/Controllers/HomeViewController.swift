@@ -10,22 +10,24 @@ import UIKit
 import MaterialComponents
 import FirebaseDatabase
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIApplicationDelegate {
    
     @IBOutlet weak var notesTableView: UITableView!
     @IBOutlet weak var progressBar: MDCActivityIndicator!
     @IBOutlet weak var noteSearchBar: UISearchBar!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     var firebaseManager: FirebaseManager!
+    var firebaseAuthManager: FirebaseAuthManager!
     //Store all the note data
     var notes: [Note] = []
     //Stores a list of the filtered data
     var filteredNotes: [Note] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseManager = FirebaseManager()
+        firebaseAuthManager = FirebaseAuthManager()
         firebaseManager.attachNotesObserverTo(controller: self)
         noteSearchBar.delegate = self
         //Setup the indeterminate progressbar
@@ -35,7 +37,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //Make the progressbar only display one colour
         progressBar.cycleColors = [UIColor.red]
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewNoteSegue", let rowTapped = notesTableView.indexPathForSelectedRow?.row {
             let destination = segue.destination as! ViewNoteViewController
@@ -43,6 +45,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             notesTableView.deselectRow(at: IndexPath(row: rowTapped, section: 0), animated: true)
         } else if segue.identifier == "LoginViewSegue" {
             let _ = segue.destination as! LoginViewController
+        }
+    }
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        if firebaseAuthManager.logout() {
+            self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+            //should probably dismiss this view controller somehow
         }
     }
     

@@ -70,4 +70,9 @@ class FirebaseAuthManager {
         }
         return ""
     }
+    
+    func getUserFirstName() -> String {
+        let manager = FirebaseRepoManager()
+        return ""
+    }
 }

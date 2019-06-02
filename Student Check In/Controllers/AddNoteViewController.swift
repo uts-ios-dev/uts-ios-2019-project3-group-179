@@ -60,15 +60,24 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         self.dismiss(animated: true, completion: nil)
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        tryToEnableAddButton()
+    }
     
-    internal func textViewDidBeginEditing(_ textView: UITextView) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Since there is only one textfield this is next
+        noteDescriptionTextView.becomeFirstResponder()
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == Util.placeholderTextColor {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     }
     
-    internal func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             setDescriptionPlaceHolder()
         }
@@ -77,14 +86,10 @@ class AddNoteViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     /// Notifies the application whether the textview changed or not
     ///
     /// - Parameter textView: the textview that changed
-    internal func textViewDidChange(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         tryToEnableAddButton()
     }
 
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        tryToEnableAddButton()
-    }
-    
     /// Enables the add navigation button if the title and description text isn't empty
     func tryToEnableAddButton() {
         addButton.isEnabled = !Util.areAnyTextFieldsEmpty(textFields: [noteTitleTextField]) && (!noteDescriptionTextView.text.isEmpty && noteDescriptionTextView.textColor != Util.placeholderTextColor)
