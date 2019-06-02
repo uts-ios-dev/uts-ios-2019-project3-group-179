@@ -965,7 +965,7 @@
                                 <rect key="frame" x="0.0" y="120" width="320" height="311"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOo-cg-YB9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="301"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fileCell" id="g9X-5H-u4K" customClass="FileTableViewCell" customModule="Student_Check_In" customModuleProvider="target">
@@ -1025,16 +1025,22 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHx-6g-uPd" customClass="MDCActivityIndicator">
                                         <rect key="frame" x="110" y="110" width="100" height="91"/>
                                     </view>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fqp-dj-6lm">
+                                        <rect key="frame" x="0.0" y="309" width="320" height="2"/>
+                                    </progressView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fqp-dj-6lm" secondAttribute="bottom" id="EfA-Bf-OsM"/>
                                     <constraint firstItem="xOo-cg-YB9" firstAttribute="top" secondItem="R7G-I8-oef" secondAttribute="top" id="EyV-kG-mpd"/>
                                     <constraint firstItem="CHx-6g-uPd" firstAttribute="top" secondItem="R7G-I8-oef" secondAttribute="top" constant="110" id="PKT-t6-E5S"/>
+                                    <constraint firstAttribute="trailing" secondItem="fqp-dj-6lm" secondAttribute="trailing" id="Pf8-xc-ZeL"/>
                                     <constraint firstAttribute="bottom" secondItem="CHx-6g-uPd" secondAttribute="bottom" constant="110" id="U9q-TN-tjx"/>
                                     <constraint firstItem="xOo-cg-YB9" firstAttribute="leading" secondItem="R7G-I8-oef" secondAttribute="leading" id="VZB-XD-jfk"/>
-                                    <constraint firstAttribute="bottom" secondItem="xOo-cg-YB9" secondAttribute="bottom" id="WQw-6v-Nvl"/>
+                                    <constraint firstAttribute="bottom" secondItem="xOo-cg-YB9" secondAttribute="bottom" constant="10" id="WQw-6v-Nvl"/>
                                     <constraint firstItem="CHx-6g-uPd" firstAttribute="leading" secondItem="R7G-I8-oef" secondAttribute="leading" constant="110" id="aiH-u2-doe"/>
                                     <constraint firstAttribute="trailing" secondItem="CHx-6g-uPd" secondAttribute="trailing" constant="110" id="cgL-4D-gb3"/>
+                                    <constraint firstItem="fqp-dj-6lm" firstAttribute="leading" secondItem="R7G-I8-oef" secondAttribute="leading" id="frE-cF-psc"/>
                                     <constraint firstAttribute="trailing" secondItem="xOo-cg-YB9" secondAttribute="trailing" id="yyq-C2-ufh"/>
                                 </constraints>
                             </view>
@@ -1054,16 +1060,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="FSD-ec-7Rf" firstAttribute="top" secondItem="Ljo-65-v08" secondAttribute="bottom" id="0LH-jJ-1w2"/>
                             <constraint firstItem="FSD-ec-7Rf" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="25g-Az-Ty1"/>
                             <constraint firstItem="R7G-I8-oef" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="3Zs-bR-HkQ"/>
                             <constraint firstItem="FSD-ec-7Rf" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="5Of-S4-TdN"/>
-                            <constraint firstItem="R7G-I8-oef" firstAttribute="top" secondItem="FSD-ec-7Rf" secondAttribute="bottom" id="7cH-JF-Iuh"/>
-                            <constraint firstItem="Ljo-65-v08" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="FE5-Jj-JVd"/>
                             <constraint firstItem="Uq6-eg-dlf" firstAttribute="trailing" secondItem="tlH-Jg-axS" secondAttribute="trailing" constant="16" id="GNU-01-adL"/>
                             <constraint firstItem="R7G-I8-oef" firstAttribute="bottom" secondItem="Uq6-eg-dlf" secondAttribute="bottom" id="GdC-MH-XG5"/>
-                            <constraint firstItem="Ljo-65-v08" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="JgV-rS-2A5"/>
-                            <constraint firstItem="FSD-ec-7Rf" firstAttribute="top" secondItem="Ljo-65-v08" secondAttribute="bottom" id="Tkk-dJ-KWa"/>
-                            <constraint firstItem="Ljo-65-v08" firstAttribute="top" secondItem="Uq6-eg-dlf" secondAttribute="top" id="tGD-CC-am9"/>
+                            <constraint firstItem="Ljo-65-v08" firstAttribute="leading" secondItem="Uq6-eg-dlf" secondAttribute="leading" id="XG4-Jg-d8D"/>
+                            <constraint firstItem="Ljo-65-v08" firstAttribute="top" secondItem="Uq6-eg-dlf" secondAttribute="top" id="ZCj-hF-4wh"/>
+                            <constraint firstItem="FSD-ec-7Rf" firstAttribute="top" secondItem="Ljo-65-v08" secondAttribute="bottom" id="ame-cW-9T3"/>
+                            <constraint firstItem="R7G-I8-oef" firstAttribute="top" secondItem="FSD-ec-7Rf" secondAttribute="bottom" id="dNR-IQ-BQv"/>
+                            <constraint firstItem="Ljo-65-v08" firstAttribute="trailing" secondItem="Uq6-eg-dlf" secondAttribute="trailing" id="kPl-iW-UHU"/>
                             <constraint firstItem="Uq6-eg-dlf" firstAttribute="bottom" secondItem="tlH-Jg-axS" secondAttribute="bottom" constant="16" id="tdt-u4-bOr"/>
                             <constraint firstItem="Uq6-eg-dlf" firstAttribute="trailing" secondItem="R7G-I8-oef" secondAttribute="trailing" id="zya-zY-HuA"/>
                         </constraints>

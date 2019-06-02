@@ -16,6 +16,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var fileSearchBar: UISearchBar!
     @IBOutlet weak var progressBar: MDCActivityIndicator!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var progressView: UIProgressView!
     
     var imagePicker: UIImagePickerController!
     
