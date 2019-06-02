@@ -33,6 +33,14 @@ class FirebaseRepoManager {
         updateNoteRef.setValue(note.toDictionary())
     }
     
+    /// Deletes a note from the database
+    ///
+    /// - Parameter note: the note to delete
+    func deleteNote(note: Note) {
+        deleteValue(location: Keys.Note.rawValue, id: note.id!)
+    }
+    
+    
     /// Adds a a task to the Firebase database
     ///
     /// - Parameter task: the task to add to the database
@@ -49,20 +57,41 @@ class FirebaseRepoManager {
         updateTaskRef.setValue(task.toDictionary())
     }
     
+    /// Adds a file to the database
+    ///
+    /// - Parameter file: the file to add
     func addFile(file: inout File) {
         file.id = generateId(location: Keys.File.rawValue)
         addValue(location: Keys.File.rawValue, value: file.toDictionary())
     }
     
+    /// Deletes a file in the database
+    ///
+    /// - Parameter file: the file to delete
+    func deleteFile(file: File) {
+        deleteValue(location: Keys.File.rawValue, id: file.id!)
+    }
+    
     /// Pushes a value to the database
     ///
     /// - Parameters:
-    ///   - location: the location to push the value
+    ///   - location: the root location to push the value
     ///   - value: the value to push
     func addValue(location: String, value: NSDictionary) {
         let valueRef = ref.child(location)
         valueRef.child(value["id"] as! String).setValue(value)
     }
+    
+    /// Deletes a value in the database
+    ///
+    /// - Parameters:
+    ///   - location: the root location to delete at
+    ///   - id: the id of the object to remove
+    func deleteValue(location: String, id: String) {
+        let valueRef = ref.child(location)
+        valueRef.child(id).removeValue()
+    }
+    
     
     /// Generates a unique id for a specified location
     ///

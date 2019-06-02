@@ -25,4 +25,10 @@ class Util {
         return false
     }
     
+    static func getPromptAlertController(title: String, message: String, cancelTitle: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
+        return alertController
+    }
+    
 }

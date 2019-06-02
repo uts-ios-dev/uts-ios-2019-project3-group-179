@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MDCActivityIndicator
 
 extension Date {
     
@@ -28,6 +29,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var taskSearchBar: UISearchBar!
+    @IBOutlet weak var progressBar: MDCActivityIndicator!
     
     //Stores the tasks to be loaded into the tableview
     var tasks: [Task] = []
@@ -38,6 +40,13 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         let firebaseManager = FirebaseManager()
         firebaseManager.attachTasksObserverTo(controller: self)
+        //Setup the progressbar
+        progressBar.sizeToFit()
+        progressBar.startAnimating()
+        progressBar.indicatorMode = .indeterminate
+        //Make the progressbar only display one colour
+        progressBar.cycleColors = [UIColor.red]
+        //Create a date formatter to be used
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Util.long_date_format
         taskSearchBar.delegate = self
@@ -118,14 +127,14 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     /// - Parameter task: the task that was updated
     func updateTask(task: Task) {
         //Update the original source of tasks
-        for index in 0...tasks.count - 1 {
+        for index in 0..<tasks.count {
             if tasks[index].id! == task.id! {
                 tasks[index] = task
                 break
             }
         }
         //Update the respective row in the task table
-        for index in 0...filteredTasks.count - 1 {
+        for index in 0..<filteredTasks.count {
             if filteredTasks[index].id! == task.id! {
                 filteredTasks[index] = task
                 taskTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
@@ -142,9 +151,10 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         tasks.append(task)
         if isKeywordInTaskTitle(task: task, keyword: taskSearchBar.text!) { //only append if it meets the criteria
             filteredTasks.append(task)
-        } else { //Append to the filtered tasks if there is no text in the searchbar
+        } else if taskSearchBar.text!.isEmpty{ //Append to the filtered tasks if there is no text in the searchbar
             filteredTasks.append(task)
         }
+        taskTableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -70,20 +70,28 @@ class FirebaseManager {
         //Observer for notes being added to the database
         let notesReference = ref.child(Keys.Note.rawValue)
         notesReference.observe(.childAdded, with: { snapshot in
-            //Stop the progressbar on the home screen from animating one a value is retrieved
-            if (controller.progressBar != nil) {
-                controller.progressBar.removeFromSuperview()
-            }
-
             if let note = snapshot.toNote() {
                 controller.addNote(note: note)
-                controller.notesTableView.reloadData()
             }
         })
         //Observer for notes being changed in the database
         notesReference.observe(.childChanged, with: { snapshot in
             if let note = snapshot.toNote() {
                 controller.updateNote(note)
+            }
+        })
+        
+        notesReference.observe(.childRemoved, with: { snapshot in
+            if let note = snapshot.toNote() {
+                controller.reloadTableFromDelete(note: note, indexPath: nil)
+            }
+        })
+        
+        //Observer for any data changes and once there is a connection with firebase, stop the spinner
+        notesReference.observe(.value, with: { snapshot in
+            //Stop the progressbar on the home screen from animating once connection is established
+            if (controller.progressBar != nil) {
+                controller.progressBar.removeFromSuperview()
             }
         })
     }
@@ -96,7 +104,6 @@ class FirebaseManager {
         taskReference.observe(.childAdded, with: { snapshot in
             if let task = snapshot.toTask() {
                 controller.addTask(task: task)
-                controller.taskTableView.reloadData()
             }
         })
         
@@ -105,6 +112,14 @@ class FirebaseManager {
                 controller.updateTask(task: task)
             }
         })
+        
+        taskReference.observe(.value, with: { snapshot in
+            //Stop the progressbar on the task screen from animating once connection is established
+            if (controller.progressBar != nil) {
+                controller.progressBar.removeFromSuperview()
+            }
+        })
+        
     }
     
     /// Attaches an observer pointing at the file node in firebase and notifies the respective controller
@@ -115,7 +130,19 @@ class FirebaseManager {
         filesReference.observe(.childAdded, with: { snapshot in
             if let file = snapshot.toFile() {
                 controller.addFile(file: file)
-                controller.fileTableView.reloadData()
+            }
+        })
+        
+        filesReference.observe(.childRemoved, with: { snapshot in
+            if let file = snapshot.toFile() {
+                controller.reloadTableFromDelete(file: file, indexPath: nil)
+            }
+        })
+        
+        filesReference.observe(.value, with: { snapshot in
+            //Stop the progressbar on the task screen from animating once connection is established
+            if (controller.progressBar != nil) {
+                controller.progressBar.removeFromSuperview()
             }
         })
 

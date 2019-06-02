@@ -14,6 +14,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var addPhotoButton: MDCFloatingButton!
     @IBOutlet weak var fileTableView: UITableView!
     @IBOutlet weak var fileSearchBar: UISearchBar!
+    @IBOutlet weak var progressBar: MDCActivityIndicator!
     
     var imagePicker: UIImagePickerController!
     
@@ -21,12 +22,19 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var files: [File] = []
     //Store the files to display on the tableview
     var filteredFiles: [File] = []
+    var firebaseRepoManager: FirebaseRepoManager!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseManager().attachFilesObserverTo(controller: self)
+        firebaseRepoManager = FirebaseRepoManager()
         fileSearchBar.delegate = self
+        progressBar.sizeToFit()
+        progressBar.startAnimating()
+        progressBar.indicatorMode = .indeterminate
+        //Make the progressbar only display one colour
+        progressBar.cycleColors = [UIColor.red]
         DispatchQueue.main.async {
             self.imagePicker = UIImagePickerController()
         }
@@ -35,12 +43,9 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func addPhotoButtonTapped(_ sender: MDCButton) {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-        } else {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePicker.sourceType = .photoLibrary
         }
-        
         present(imagePicker, animated: true, completion: nil)
 
     }
@@ -59,8 +64,14 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.fileDownloadButton.tag = indexPath.row
         cell.fileDownloadButton.addTarget(self, action: #selector(downloadFile(sender:)), for: .touchUpInside)
         cell.fileNameLabel.text = file.fileName
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteFile(file: filteredFiles.remove(at: indexPath.row))
+            reloadTableFromDelete(file: nil, indexPath: indexPath)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -80,6 +91,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func addFile(file: File) {
         files.append(file)
         filteredFiles.append(file)
+        fileTableView.reloadData()
     }
     
     /// Downloads a file based on the button pressed
@@ -168,6 +180,61 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     ///   - searchText: the search text to check if it is in the file name
     func isSearchTextInFileName(file: File, searchText: String) -> Bool {
         return file.fileName.lowercased().contains(searchText.lowercased())
+    }
+    
+    /// Deletes a file from the database, storage and tableview
+    ///
+    /// - Parameter file: the file to delete
+    func deleteFile(file: File) {
+        //Remove the file from the original source and the filtered list
+        deleteFileById(id: file.id!, from: &self.files)
+        deleteFileById(id: file.id!, from: &self.filteredFiles)
+        //Remove file from firebase database
+        firebaseRepoManager.deleteFile(file: file)
+        //Remove file from firebase storage
+        FirebaseStorageManager().deleteImage(filename: file.fileName)
+        
+    }
+    
+    /// Reloads the table with the delete animation
+    ///
+    /// - Parameter note: the note that was deleted
+    func reloadTableFromDelete(file: File?, indexPath: IndexPath?) {
+        if indexPath != nil {
+            fileTableView.deleteRows(at: [indexPath!], with: .left)
+        } else if let file = file {
+            let index = getIndexOf(file: file)
+            if index != -1 {
+                self.deleteFileById(id: file.id!, from: &self.files)
+                self.deleteFileById(id: file.id!, from: &self.filteredFiles)
+                fileTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+            }
+        }
+    }
+    
+    /// Deletes the file in the original source by ID
+    ///
+    /// - Parameter id: the id of the file to delete
+    func deleteFileById(id: String, from: inout [File]) {
+        for index in 0..<from.count {
+            if from[index].id == id {
+                from.remove(at: index)
+                break
+            }
+        }
+    }
+    
+    /// Returns the index of the file in the filtered files
+    ///
+    /// - Parameter file: the file to retrieve it's index
+    
+    func getIndexOf(file: File) -> Int {
+        for index in 0..<filteredFiles.count {
+            if filteredFiles[index].id == file.id {
+                return index
+            }
+        }
+        return -1
     }
     
 }

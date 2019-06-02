@@ -26,13 +26,13 @@ class FirebaseStorageManager {
     ///   - fileName: the desired name of the file uploaded
     func uploadImage(path: String, fileName: String, controller: FileViewController) {
         //Get an instance to the file from the path
-        let fileToUpload = URL(string: path)!
+        let imageToUpload = URL(string: path)!
         //Create a reference to the location we want to store this file
-        let fileToUploadReference = storageRef.child(fileName)
+        let imageToUploadReference = storageRef.child(fileName)
         
-        fileToUploadReference.putFile(from: fileToUpload, metadata: nil, completion: { (metadata, error) in
+        imageToUploadReference.putFile(from: imageToUpload, metadata: nil, completion: { (metadata, error) in
             //Retrieve the download url after upload is complete
-            fileToUploadReference.downloadURL(completion: { (downloadUrl, error) in
+            imageToUploadReference.downloadURL(completion: { (downloadUrl, error) in
                 guard let downloadUrl = downloadUrl else {
                     print("Something has gone terribly wrong...")
                     return
@@ -40,6 +40,18 @@ class FirebaseStorageManager {
                 var file = File(fileName: fileName, referenceToFile: downloadUrl.absoluteString)
                 FirebaseRepoManager().addFile(file: &file)
             })
+        })
+    }
+    
+    /// Delete the image with the specified filename
+    ///
+    /// - Parameter filename: the name of the file to delete
+    func deleteImage(filename: String) {
+        let imageToDeleteReference = storageRef.child(filename)
+        imageToDeleteReference.delete(completion: { error in
+            if let error = error {
+                
+            }
         })
     }
     

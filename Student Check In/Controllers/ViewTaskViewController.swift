@@ -50,10 +50,19 @@ class ViewTaskViewController: UIViewController {
     }
     
     @IBAction func taskCompleteButtonTapped(_ sender: MDCFloatingButton) {
-        if let task = self.task {
-            self.task?.isCompleted = "Yes"
-            FirebaseRepoManager().updateTask(task: &self.task!)
+        if self.task != nil {
+            //Only update the task as complete if it is not complete
+            if self.task!.isCompleted == "No" {
+                self.task?.isCompleted = "Yes"
+                FirebaseRepoManager().updateTask(task: &self.task!)
+                showTaskCompletePrompt()
+            }
         }
+    }
+    
+    func showTaskCompletePrompt() {
+        let promptController = Util.getPromptAlertController(title: "Great Job!", message: "Task is now marked as complete", cancelTitle: "OK")
+        self.present(promptController, animated: true, completion: nil)
     }
     
 }

@@ -56,6 +56,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //This way the user experiences no delay with removing a note
+        if editingStyle == .delete {
+            //Remove from all required areas
+            deleteNote(filteredNotes[indexPath.row])
+            reloadTableFromDelete(note: nil, indexPath: indexPath)
+        }
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterByCriteria(searchText: searchText)
     }
@@ -69,9 +78,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //Only append the data to the tableview source if there is no filter
         if isKeywordInNoteTitle(note: note, keyword: noteSearchBar.text!) {
             filteredNotes.append(note)
-        } else {
+        } else if noteSearchBar.text!.isEmpty {
             filteredNotes.append(note)
         }
+        notesTableView.reloadData()
     }
     
     /// Reflects the changes of a note in the tableview
@@ -79,7 +89,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     /// - Parameter updateNote: the note that was changed
     func updateNote(_ updateNote: Note) {
         //Update the original source of notes
-        for index in 0...notes.count - 1 {
+        for index in 0..<notes.count {
             //Update the data source that doesn't get filtered
             if notes[index].id! == updateNote.id! {
                 notes[index] = updateNote
@@ -87,12 +97,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         //Update the respective row in the tableview
-        for index in 0...filteredNotes.count - 1 {
+        for index in 0..<filteredNotes.count {
             if filteredNotes[index].id! == updateNote.id! {
                 filteredNotes[index] = updateNote
                 notesTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                break
             }
         }
+    }
+    
+    /// Reloads the table with the delete animation
+    ///
+    /// - Parameter note: the note that was deleted
+    func reloadTableFromDelete(note: Note?, indexPath: IndexPath?) {
+        if indexPath != nil {
+            notesTableView.deleteRows(at: [indexPath!], with: .left)
+        } else if let note = note {
+            let index = getIndexOf(note: note)
+            if index != -1 {
+                self.deleteNotesById(id: note.id!, notes: &self.notes)
+                self.deleteNotesById(id: note.id!, notes: &self.filteredNotes)
+                notesTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+            }
+        }
+        
     }
     
     /// Filters the notes by either date or a title keyword
@@ -124,6 +152,46 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     /// - Returns: true if the keyword is in the title otherwise false
     func isKeywordInNoteTitle(note: Note, keyword: String) -> Bool {
         return note.title.lowercased().contains(keyword.lowercased())
+    }
+    
+    /// Deletes the note from the original source, the filtered notes and the database
+    ///
+    /// - Parameter _note: the note to delete
+    func deleteNote(_ note: Note) {
+        //Delete from the original source
+        deleteNotesById(id: note.id!, notes: &self.notes)
+        
+        //Delete from the filtered list
+        deleteNotesById(id: note.id!, notes: &self.filteredNotes)
+        //Delete from firebase
+        FirebaseRepoManager().deleteNote(note: note)
+    }
+    
+    /// Deletes a note by id from the original source
+    ///
+    /// - Parameter id: the id of the note to delete
+    func deleteNotesById(id: String, notes: inout [Note]) {
+        for index in 0..<notes.count {
+            if notes[index].id! == id {
+                notes.remove(at: index)
+                return
+            }
+        }
+    }
+    
+    
+    
+    /// Retrieves the index of the note in the filtered notes
+    ///
+    /// - Parameter note: the note to retrieve it's index
+    /// - Returns: the index of the note or if not found -1
+    func getIndexOf(note: Note) -> Int {
+        for index in 0..<filteredNotes.count {
+            if filteredNotes[index].id == note.id {
+                return index
+            }
+        }
+        return -1
     }
     
     
