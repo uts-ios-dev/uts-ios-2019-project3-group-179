@@ -9,7 +9,8 @@
 import UIKit
 import MaterialComponents.MDCContainerScheme
 
-class FileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate {
+class FileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate, URLSessionTaskDelegate
+, URLSessionDownloadDelegate {
     
     @IBOutlet weak var addPhotoButton: MDCFloatingButton!
     @IBOutlet weak var fileTableView: UITableView!
@@ -44,6 +45,11 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         progressView.setProgress(0, animated: false)
         firebaseAuthManager.setFileNavTitle(controller: self)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //End editing if we tap outside of controls and the keyboard
+        self.view.endEditing(true)
     }
     
     @IBAction func addPhotoButtonTapped(_ sender: MDCButton) {
@@ -131,26 +137,42 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     ///   - url: the url to download the image from
     func downloadImageFrom(url: String) {
         if let dataUrl = URL(string: url) {
-            let sessionConfig = URLSessionConfiguration.default
-            let session = URLSession(configuration: sessionConfig)
+            let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue.main)
             let request = URLRequest(url: dataUrl)
-            
-            let downloadTask = session.downloadTask(with: request, completionHandler: { (writenToURL, response, error) in
-                if let writenToURL = writenToURL, error == nil {
-                    do {
-                        if let imageData = try UIImage(data: Data(contentsOf: writenToURL)) {
-                            UIImageWriteToSavedPhotosAlbum(imageData, nil, nil, nil)
-                        }
-                    } catch {
-                        //Add error handling here
-                    }
-                } else {
-                    print("An error has occured...")
-                }
-            })
+            //Make the progressview blue to indicate downloading
+            progressView.tintColor = .blue
+            let downloadTask = session.downloadTask(with: request)
             downloadTask.resume()
         } else {
-            //A file with the same name and extension alread yexists
+            //A file with the same name and extension already exists
+        }
+    }
+    
+    ///Delegate to monitor the download progress
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64,totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        progressView.setProgress(Float(totalBytesWritten) / Float(totalBytesExpectedToWrite), animated: false)
+    }
+    
+    ///Delegate after download has completed
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        //Reset the progress view
+        progressView.progress = 0
+        do {
+            if let imageData = try UIImage(data: Data(contentsOf: location)) {
+                UIImageWriteToSavedPhotosAlbum(imageData, nil, nil, nil)
+            }
+        } catch {
+            //Add error handling here
+            let errorSavingPrompt = Util.getPromptAlertController(title: "Error saving", message: "Image could not be saved to photo library", cancelTitle: "OK")
+            self.present(errorSavingPrompt, animated: true, completion: nil)
+        }
+    }
+    
+    ///Delegate that the download failed
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if error != nil {
+            let errorDownloadingPrompt = Util.getPromptAlertController(title: "Error downloading", message: "File could not be downloaded", cancelTitle: "OK")
+            self.present(errorDownloadingPrompt, animated: true, completion: nil)
         }
     }
     
@@ -162,6 +184,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let uploadAction = UIAlertAction(title: "Upload", style: .default, handler: {_ in
             //First text field is the name input
             if let fileName = inputFileNameController.textFields?[0].text {
+                self.progressView.tintColor = .green
                 FirebaseStorageManager().uploadImage(path: selectedImageUrl.absoluteString, fileName: fileName, controller: self)
             }
         })

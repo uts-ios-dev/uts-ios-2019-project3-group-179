@@ -28,8 +28,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginProgressBar.indicatorMode = .indeterminate
         loginProgressBar.cycleColors = [.red]
         // Do any additional setup after loading the view.
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TabBarSegue" {
+            let _ = segue.destination
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //End editing if we tap outside of controls and the keyboard
+        self.view.endEditing(true)
+    }
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -37,6 +50,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if isValid(email: email, password: password) {
             userLogin(email: email, password: password)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            passwordTextField.resignFirstResponder()
+        default:
+            break
+        }
+        return true
     }
     
     //Check if fields are entered
@@ -59,13 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func startSegue() {
         self.performSegue(withIdentifier: "TabBarSegue", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TabBarSegue" {
-            let _ = segue.destination
-        }
-    }
-    
+
     /// Reveals the error label and makes the progressbar disappear
     func showErrorLabel() {
         loginProgressBar.stopAnimating()
@@ -73,22 +92,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         errorLabel.text = "Invalid email or password"
     }
     
-    //Used to show error message
-    /* func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 170, y: self.view.frame.size.height-100, width: 350, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 10.0)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    } */
 }

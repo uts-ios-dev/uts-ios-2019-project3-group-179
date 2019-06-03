@@ -41,7 +41,6 @@ class FirebaseStorageManager {
                 FirebaseRepoManager().addFile(file: &file)
             })
         })
-        controller.progressView.tintColor = .green
         uploadTask.observe(.progress, handler: { snapshot in
             let percentComplete = Double(snapshot.progress!.completedUnitCount)
                 / Double(snapshot.progress!.totalUnitCount)
@@ -61,7 +60,7 @@ class FirebaseStorageManager {
         let imageToDeleteReference = storageRef.child(filename)
         imageToDeleteReference.delete(completion: { error in
             if let error = error {
-                
+                print(error.localizedDescription)
             }
         })
     }

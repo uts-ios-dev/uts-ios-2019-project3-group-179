@@ -46,6 +46,8 @@ class ViewNoteViewController: UIViewController {
             editNoteController.sendingController = self
         }
     }
+    
+
 
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

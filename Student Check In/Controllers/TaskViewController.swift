@@ -66,6 +66,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //End editing if we tap outside of controls and the keyboard
+        self.view.endEditing(true)
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         let auth = FirebaseAuthManager()
         if auth.logout() {

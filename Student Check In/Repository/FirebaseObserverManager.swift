@@ -128,7 +128,6 @@ class FirebaseManager {
     ///
     /// - Parameter controller: the controller to notify
     func attachFilesObserverTo(controller: FileViewController) {
-        let userReference = ref.child("users").child(Auth.auth().currentUser!.uid)
         let filesReference = ref.child(Keys.File.rawValue)
         filesReference.observe(.childAdded, with: { snapshot in
             if let file = snapshot.toFile() {

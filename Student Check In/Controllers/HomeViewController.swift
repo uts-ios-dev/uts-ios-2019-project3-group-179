@@ -50,6 +50,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //End editing if we tap outside of controls and the keyboard
+        self.view.endEditing(true)
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         if firebaseAuthManager.logout() {
             self.performSegue(withIdentifier: "logoutSegue", sender: nil)

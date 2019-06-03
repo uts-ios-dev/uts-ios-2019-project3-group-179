@@ -69,6 +69,11 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //End editing if we tap outside of controls and the keyboard
+        self.view.endEditing(true)
+    }
+    
     @IBAction func dueDateEditingBegan(_ sender: UITextField) {
         datePicker.datePickerMode = .date
         sender.inputView = datePicker

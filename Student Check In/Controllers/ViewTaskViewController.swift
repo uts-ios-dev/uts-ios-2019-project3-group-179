@@ -40,7 +40,7 @@ class ViewTaskViewController: UIViewController {
             destination.sendingViewController = self
         }
     }
-    
+
     @IBAction func editButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "editTaskSegue", sender: nil)
     }
