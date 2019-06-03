@@ -47,7 +47,7 @@ class FirebaseAuthManager {
             if error == nil {
                 print("Successfully logged in")
             } else {
-                print("Failed to login: ", error!.localizedDescription)
+                print(error!.localizedDescription)
             }
         }
     }
@@ -65,7 +65,7 @@ class FirebaseAuthManager {
     }
     
     func getUserId() -> String {
-        if Auth.auth().currentUser != nil {
+        if isSignedIn() {
             return Auth.auth().currentUser!.uid
         }
         return ""
@@ -74,5 +74,12 @@ class FirebaseAuthManager {
     func getUserFirstName() -> String {
         let manager = FirebaseRepoManager()
         return ""
+    }
+    
+    func isSignedIn() -> Bool {
+        if Auth.auth().currentUser != nil {
+            return true
+        }
+        return false
     }
 }
