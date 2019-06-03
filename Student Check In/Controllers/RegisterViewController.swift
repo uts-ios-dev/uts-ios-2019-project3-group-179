@@ -15,9 +15,12 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Hide the error label initially
+        errorLabel.isHidden = true
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -43,7 +46,9 @@ class RegisterViewController: UIViewController {
     //also prints error message if not
     func isValid(email: String, name: String, password: String) -> Bool {
         if name == "" {
-            showToast(message: "Enter a name")
+            Util.revealLabel(errorLabel)
+            errorLabel.text = "Enter a name"
+            //showToast(message: "Enter a name")
             return false
         }
         if !isValidEmail(email: email) {
@@ -56,27 +61,41 @@ class RegisterViewController: UIViewController {
         return true
     }
     
+    /// Determines if the email address is valid
+    ///
+    /// - Parameter email: the email to determine it's validity
+    /// - Returns: true if the email is valid otherwise falsa
     func isValidEmail(email: String) -> Bool {
         if email != "" && email.contains("@") && email.contains(".com") {
             return true
         }
-        showToast(message: "Enter a valid email address")
+        Util.revealLabel(errorLabel)
+        errorLabel.text = "Enter a valid email address"
+        //showToast(message: "Enter a valid email address")
         return false
     }
     
+    /// Determines if the password meets the valid requirements
+    ///
+    /// - Parameter password: the password to determine it's validity
+    /// - Returns: true if the password is valid otherwise false
     func isValidPassword(password: String) -> Bool {
         if password != "" && password.count >= 6 {
             return true
         }
-        showToast(message: "Password must be longer than 6 characters")
+        Util.revealLabel(errorLabel)
+        errorLabel.text = "Password must be longer than 6 characters"
+        //showToast(message: "Password must be longer than 6 characters")
         return false
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
+    
     //Used to show toast error message
+    /*
     func showToast(message : String) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 170, y: self.view.frame.size.height-100, width: 350, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
@@ -93,6 +112,6 @@ class RegisterViewController: UIViewController {
         }, completion: {(isCompleted) in
             toastLabel.removeFromSuperview()
         })
-    }
+    } */
     
 }

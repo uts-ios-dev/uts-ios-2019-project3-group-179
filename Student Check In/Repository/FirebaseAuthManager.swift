@@ -53,7 +53,7 @@ class FirebaseAuthManager {
                 controller.startSegue()
             } else {
                 print(error!.localizedDescription)
-                controller.showToast(message: "Invalid email or password")
+                controller.showErrorLabel()
             }
         }
     }

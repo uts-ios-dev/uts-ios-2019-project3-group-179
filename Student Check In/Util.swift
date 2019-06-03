@@ -31,4 +31,10 @@ class Util {
         return alertController
     }
     
+    static func revealLabel(_ label: UILabel) {
+        if label.isHidden {
+            label.isHidden = false
+        }
+    }
+    
 }
