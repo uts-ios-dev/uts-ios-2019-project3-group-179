@@ -17,6 +17,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var progressBar: MDCActivityIndicator!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     var imagePicker: UIImagePickerController!
     
@@ -31,6 +32,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         FirebaseManager().attachFilesObserverTo(controller: self)
         firebaseRepoManager = FirebaseRepoManager()
+        let firebaseAuthManager = FirebaseAuthManager()
         fileSearchBar.delegate = self
         progressBar.sizeToFit()
         progressBar.startAnimating()
@@ -41,6 +43,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.imagePicker = UIImagePickerController()
         }
         progressView.setProgress(0, animated: false)
+        firebaseAuthManager.setFileNavTitle(controller: self)
     }
     
     @IBAction func addPhotoButtonTapped(_ sender: MDCButton) {

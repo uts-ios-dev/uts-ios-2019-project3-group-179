@@ -30,6 +30,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var taskSearchBar: UISearchBar!
     @IBOutlet weak var progressBar: MDCActivityIndicator!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     //Stores the tasks to be loaded into the tableview
     var tasks: [Task] = []
@@ -40,6 +41,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         let firebaseManager = FirebaseManager()
         firebaseManager.attachTasksObserverTo(controller: self)
+        let firebaseAuthManger = FirebaseAuthManager()
         //Setup the progressbar
         progressBar.sizeToFit()
         progressBar.startAnimating()
@@ -51,6 +53,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         dateFormatter.dateFormat = Util.long_date_format
         taskSearchBar.delegate = self
         taskTableView.estimatedRowHeight = CGFloat(95)
+        firebaseAuthManger.setTaskNavTitle(controller: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

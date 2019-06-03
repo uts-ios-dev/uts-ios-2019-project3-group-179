@@ -30,6 +30,7 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    //Register
     func registerUser(email: String, name: String, password: String) {
         let auth = FirebaseAuthManager()
         auth.register(email: email, name: name, password: password)
@@ -38,6 +39,8 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    //Check if name, email and password fields are entered properly and
+    //also prints error message if not
     func isValid(email: String, name: String, password: String) -> Bool {
         if name == "" {
             showToast(message: "Enter a name")

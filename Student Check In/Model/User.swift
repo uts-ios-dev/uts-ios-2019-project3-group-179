@@ -1,4 +1,4 @@
-//
+//  Struct which encapsulates the user's details
 //  User.swift
 //  Student Check In
 //

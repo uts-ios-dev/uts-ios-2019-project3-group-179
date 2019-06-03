@@ -17,6 +17,8 @@ class FirebaseAuthManager {
         ref = Database.database().reference()
     }
     
+    //Registers user into firebase authentication and also creates user profile
+    //in database for storing of users data
     func register(email: String, name: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password)
         { user, error in
@@ -26,9 +28,11 @@ class FirebaseAuthManager {
                 print("Failed to register: ", error!.localizedDescription)
             }
             
+            //Get created user's id and create user info to be put into database
             guard let userId = user?.user.uid else { return }
             let values = ["email": email, "name": name]
             
+            //Put user values into firebase database under their user id
             self.ref.child("users").child(userId).updateChildValues(values,
                                                 withCompletionBlock: { error, ref in
                 
@@ -42,12 +46,14 @@ class FirebaseAuthManager {
         }
     }
     
-    func login(email: String, password: String) {
+    func login(email: String, password: String, controller: LoginViewController) {
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if error == nil {
                 print("Successfully logged in")
+                controller.startSegue()
             } else {
                 print(error!.localizedDescription)
+                controller.showToast(message: "Invalid email or password")
             }
         }
     }
@@ -71,11 +77,32 @@ class FirebaseAuthManager {
         return ""
     }
     
-    func getUserFirstName() -> String {
-        let manager = FirebaseRepoManager()
-        return ""
+    //Sets the user's name as title of navigation bar in respective controller
+    func setHomeNavTitle(controller: HomeViewController){
+        ref.child("users").child(getUserId()).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let name = value?["name"] as? String ?? ""
+            controller.navigationBar.topItem?.title = "\(name)'s Repository"
+        })
     }
     
+    func setTaskNavTitle(controller: TaskViewController){
+        ref.child("users").child(getUserId()).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let name = value?["name"] as? String ?? ""
+            controller.navigationBar.topItem?.title = "\(name)'s Repository"
+        })
+    }
+    
+    func setFileNavTitle(controller: FileViewController){
+        ref.child("users").child(getUserId()).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let name = value?["name"] as? String ?? ""
+            controller.navigationBar.topItem?.title = "\(name)'s Repository"
+        })
+    }
+    
+    //Check to see if user is signed in
     func isSignedIn() -> Bool {
         if Auth.auth().currentUser != nil {
             return true

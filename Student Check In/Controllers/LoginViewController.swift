@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //Check if fields are entered
     func isValid(email: String, password: String) -> Bool {
         if emailTextField.text == "" || passwordTextField.text == "" {
             showToast(message: "Please enter email and password")
@@ -36,16 +37,14 @@ class LoginViewController: UIViewController {
         return true
     }
     
+    //Handle login using firebase authentication
     func userLogin(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
-            if error == nil {
-                self.performSegue(withIdentifier: "TabBarSegue", sender: nil)
-                print("Successfully logged in")
-            } else {
-                print("Failed to sign in: ", error!.localizedDescription)
-                self.showToast(message: "Invalid email or password")
-            }
-        }
+        let auth =  FirebaseAuthManager()
+        auth.login(email: email, password: password, controller: self)
+    }
+    
+    func startSegue() {
+        self.performSegue(withIdentifier: "TabBarSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

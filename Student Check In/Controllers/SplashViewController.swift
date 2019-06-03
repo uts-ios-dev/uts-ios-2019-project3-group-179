@@ -22,8 +22,10 @@ class SplashViewController: UIViewController {
         authenticateIfSignedIn()
     }
     
+    //Checks to see if user is already signed in or not to handle if
+    //app goes to login screen or not
     func authenticateIfSignedIn() {
-        if Auth.auth().currentUser != nil {
+        if auth.isSignedIn() {
             performSegue(withIdentifier: "TabViewSegue", sender: nil)
             print("Is signed in")
         } else {

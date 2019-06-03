@@ -53,17 +53,6 @@ extension DataSnapshot {
         }
         return nil
     }
-    
-    func toUser() -> User? {
-        let userAsDictionary = self.value as! [String: AnyObject]
-        let id = Auth.auth().currentUser!.uid
-        let email = userAsDictionary["email"] as! String
-        let name = userAsDictionary["name"] as! String
-        if !id.isEmpty && !email.isEmpty && !name.isEmpty {
-            return User(userId: id, email: email, name: name)
-        }
-        return nil
-    }
 }
 
 class FirebaseManager {
@@ -159,14 +148,6 @@ class FirebaseManager {
                 controller.progressBar.removeFromSuperview()
             }
         })
-        
-        /* userReference.observe(.value, with: { snapshot in
-            if let user = snapshot.toUser() {
-                controller.changeTitle(user: user)
-                print("\(user.name)")
-            }
-        }) */
-
     }
     
 }

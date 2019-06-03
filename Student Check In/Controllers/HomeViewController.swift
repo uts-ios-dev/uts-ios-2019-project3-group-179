@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var progressBar: MDCActivityIndicator!
     @IBOutlet weak var noteSearchBar: UISearchBar!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     var firebaseManager: FirebaseManager!
     var firebaseAuthManager: FirebaseAuthManager!
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         progressBar.indicatorMode = .indeterminate
         //Make the progressbar only display one colour
         progressBar.cycleColors = [UIColor.red]
+        firebaseAuthManager.setHomeNavTitle(controller: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
