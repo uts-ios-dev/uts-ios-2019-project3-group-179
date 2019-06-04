@@ -20,7 +20,7 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
-    var imagePicker: UIImagePickerController!
+    let imagePicker = UIImagePickerController()
     
     //Store the original set of files
     var files: [File] = []
@@ -40,9 +40,6 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
         progressBar.indicatorMode = .indeterminate
         //Make the progressbar only display one colour
         progressBar.cycleColors = [UIColor.red]
-        DispatchQueue.main.async {
-            self.imagePicker = UIImagePickerController()
-        }
         progressView.setProgress(0, animated: false)
         firebaseAuthManager.setFileNavTitle(controller: self)
     }
