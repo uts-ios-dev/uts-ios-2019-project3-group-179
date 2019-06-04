@@ -35,9 +35,10 @@ class FirebaseAuthManager {
             //Put user values into firebase database under their user id
             self.ref.child("users").child(userId).updateChildValues(values,
                                                 withCompletionBlock: { error, ref in
-                
                 if error == nil {
                     print("Successfully registered)")
+                    //Once registered, sign user out so they are not logged in and
+                    //go back to login screen
                     self.logout()
                     controller.dismiss(animated: false, completion: nil)
                 } else {
