@@ -29,7 +29,8 @@ class FirebaseRepoManager {
     ///
     /// - Parameter note: the note to update
     func updateNote(note: Note) {
-        let updateNoteRef = ref.child(Keys.Note.rawValue).child(note.id!)
+        let updateNoteRef = ref.child("users").child(Auth.auth().currentUser!.uid)
+            .child(Keys.Note.rawValue).child(note.id!)
         updateNoteRef.setValue(note.toDictionary())
     }
     
@@ -53,7 +54,8 @@ class FirebaseRepoManager {
     ///
     /// - Parameter task: the task to update
     func updateTask(task: inout Task) {
-        let updateTaskRef = ref.child(Keys.Task.rawValue).child(task.id!)
+        let updateTaskRef = ref.child("users").child(Auth.auth().currentUser!.uid)
+            .child(Keys.Task.rawValue).child(task.id!)
         updateTaskRef.setValue(task.toDictionary())
     }
     
