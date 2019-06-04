@@ -54,7 +54,7 @@ class ViewTaskViewController: UIViewController {
             //Only update the task as complete if it is not complete
             if self.task!.isCompleted == "No" {
                 self.task?.isCompleted = "Yes"
-                FirebaseRepoManager().updateTask(task: &self.task!)
+                FirebaseRepoManager(    ).updateTask(task: &self.task!)
                 showTaskCompletePrompt()
             }
         }

@@ -19,7 +19,7 @@ class FirebaseAuthManager {
     
     //Registers user into firebase authentication and also creates user profile
     //in database for storing of users data
-    func register(email: String, name: String, password: String) {
+    func register(email: String, name: String, password: String, controller: RegisterViewController) {
         Auth.auth().createUser(withEmail: email, password: password)
         { user, error in
             if error == nil{
@@ -38,9 +38,11 @@ class FirebaseAuthManager {
                 
                 if error == nil {
                     print("Successfully registered)")
+                    self.logout()
+                    controller.dismiss(animated: false, completion: nil)
                 } else {
                     print("Failed to update: ", error!.localizedDescription)
-                    return
+                    controller.failedToRegister()
                 }
             })
         }
@@ -58,16 +60,13 @@ class FirebaseAuthManager {
         }
     }
     
-    func logout() -> Bool {
+    func logout() {
         do {
             try Auth.auth().signOut()
             print("Successfully signed out")
-            return true
         } catch let logoutError as NSError {
             print("Error signing out: ", logoutError)
         }
-        
-        return false
     }
     
     func getUserId() -> String {

@@ -56,7 +56,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        if firebaseAuthManager.logout() {
+        firebaseAuthManager.logout()
+        if !firebaseAuthManager.isSignedIn() {
             self.performSegue(withIdentifier: "logoutSegue", sender: nil)
             //should probably dismiss this view controller somehow
         }

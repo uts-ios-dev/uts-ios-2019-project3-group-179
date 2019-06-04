@@ -64,7 +64,8 @@ class FileViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
         let firebaseAuthManager = FirebaseAuthManager()
-        if firebaseAuthManager.logout() {
+        firebaseAuthManager.logout()
+        if !firebaseAuthManager.isSignedIn() {
             performSegue(withIdentifier: "logoutSegue", sender: nil)
         }
     }

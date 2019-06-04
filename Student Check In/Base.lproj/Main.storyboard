@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MW6-zM-SEa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MW6-zM-SEa">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,10 +34,10 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQt-wZ-ueT">
-                                <rect key="frame" x="0.0" y="120" width="320" height="311"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="399"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1O0-UY-R7B">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="task" rowHeight="95" id="2im-Fu-tAq" customClass="TaskTableViewCell" customModule="Student_Check_In" customModuleProvider="target">
@@ -167,7 +167,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8L2-4K-hRz" customClass="MDCActivityIndicator">
-                                        <rect key="frame" x="110" y="110" width="100" height="91"/>
+                                        <rect key="frame" x="110" y="110" width="100" height="179"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -183,7 +183,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9a-V9-ixM" customClass="MDCFloatingButton">
-                                <rect key="frame" x="256" y="367" width="48" height="48"/>
+                                <rect key="frame" x="256" y="455" width="48" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="nIF-ao-guP"/>
@@ -474,10 +474,10 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-Xl-J2l">
-                                <rect key="frame" x="0.0" y="120" width="320" height="311"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="399"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1tF-si-NUK">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <color key="sectionIndexBackgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
@@ -562,7 +562,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S14-fA-FqG" customClass="MDCActivityIndicator">
-                                        <rect key="frame" x="110" y="110" width="100" height="91"/>
+                                        <rect key="frame" x="110" y="110" width="100" height="179"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -578,7 +578,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntf-5f-6LC" customClass="MDCFloatingButton">
-                                <rect key="frame" x="256" y="367" width="48" height="48"/>
+                                <rect key="frame" x="256" y="455" width="48" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="TG5-xU-5Ai"/>
@@ -985,6 +985,20 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aN-oS-b2U" customClass="MDCActivityIndicator">
+                                <rect key="frame" x="141" y="417" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b6g-ae-eSw"/>
+                                    <constraint firstAttribute="width" secondItem="3aN-oS-b2U" secondAttribute="height" multiplier="1:1" id="mxL-Al-bNv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKW-3H-gLt" customClass="MDCActivityIndicator">
+                                <rect key="frame" x="122" y="463" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HKW-3H-gLt" secondAttribute="height" multiplier="1:1" id="sg5-E1-Tjf"/>
+                                    <constraint firstAttribute="height" constant="50" id="urC-z0-e3f"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1002,6 +1016,7 @@
                             <constraint firstItem="l55-mg-NzD" firstAttribute="leading" secondItem="Ro2-of-qms" secondAttribute="leading" constant="54" id="ILN-VQ-tW5"/>
                             <constraint firstItem="qzg-y6-gta" firstAttribute="top" secondItem="7DX-au-zkc" secondAttribute="bottom" constant="30" id="KIb-Qd-5Ez"/>
                             <constraint firstItem="Izs-3i-eI9" firstAttribute="leading" secondItem="Ro2-of-qms" secondAttribute="leading" constant="54" id="KYj-YA-deY"/>
+                            <constraint firstItem="HKW-3H-gLt" firstAttribute="width" secondItem="HKW-3H-gLt" secondAttribute="height" multiplier="1:1" id="MAy-pN-CCb"/>
                             <constraint firstItem="Ro2-of-qms" firstAttribute="trailing" secondItem="1TL-Kn-yZm" secondAttribute="trailing" constant="192" id="Ngk-0O-Hl4"/>
                             <constraint firstItem="wFs-ce-6wO" firstAttribute="top" secondItem="l55-mg-NzD" secondAttribute="bottom" constant="15" id="QdD-5s-VFd"/>
                             <constraint firstItem="wfd-hz-kfy" firstAttribute="top" secondItem="qzg-y6-gta" secondAttribute="bottom" constant="8" id="QxB-L0-cxt"/>
@@ -1014,10 +1029,13 @@
                             <constraint firstItem="Ro2-of-qms" firstAttribute="trailing" secondItem="Izs-3i-eI9" secondAttribute="trailing" constant="54" id="c3p-Mg-xc4"/>
                             <constraint firstItem="Ro2-of-qms" firstAttribute="trailing" secondItem="9xA-md-lM8" secondAttribute="trailing" constant="54" id="e2v-hB-jff"/>
                             <constraint firstItem="7DX-au-zkc" firstAttribute="top" secondItem="Ro2-of-qms" secondAttribute="top" constant="25" id="gb4-rd-7zo"/>
+                            <constraint firstItem="3aN-oS-b2U" firstAttribute="width" secondItem="3aN-oS-b2U" secondAttribute="height" multiplier="1:1" id="gcl-Gl-8mc"/>
                             <constraint firstItem="wfd-hz-kfy" firstAttribute="leading" secondItem="Ro2-of-qms" secondAttribute="leading" constant="54" id="hv8-uP-7f4"/>
                             <constraint firstItem="1TL-Kn-yZm" firstAttribute="top" secondItem="9xA-md-lM8" secondAttribute="bottom" constant="8" id="i0F-dz-RX6"/>
+                            <constraint firstItem="3aN-oS-b2U" firstAttribute="centerX" secondItem="cqz-Ga-J5H" secondAttribute="centerX" id="oiS-F2-SKS"/>
                             <constraint firstItem="Ro2-of-qms" firstAttribute="trailing" secondItem="ejd-dU-POL" secondAttribute="trailing" constant="225" id="qvO-Ff-RLA"/>
                             <constraint firstItem="Izs-3i-eI9" firstAttribute="top" secondItem="1TL-Kn-yZm" secondAttribute="bottom" constant="8" id="u63-Ca-QwC"/>
+                            <constraint firstItem="3aN-oS-b2U" firstAttribute="top" secondItem="wFs-ce-6wO" secondAttribute="bottom" constant="10" id="uDL-bd-rxq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ro2-of-qms"/>
                     </view>
@@ -1026,6 +1044,7 @@
                         <outlet property="errorLabel" destination="wFs-ce-6wO" id="sBI-zF-GST"/>
                         <outlet property="nameTextField" destination="wfd-hz-kfy" id="epW-bD-RUz"/>
                         <outlet property="passwordTextField" destination="Izs-3i-eI9" id="RbH-zq-4zj"/>
+                        <outlet property="progressBar" destination="3aN-oS-b2U" id="oGG-f6-tkM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgY-dF-Eiv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1076,10 +1095,10 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-I8-oef">
-                                <rect key="frame" x="0.0" y="120" width="320" height="311"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="399"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOo-cg-YB9">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="301"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="389"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fileCell" id="g9X-5H-u4K" customClass="FileTableViewCell" customModule="Student_Check_In" customModuleProvider="target">
@@ -1137,10 +1156,10 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHx-6g-uPd" customClass="MDCActivityIndicator">
-                                        <rect key="frame" x="110" y="110" width="100" height="91"/>
+                                        <rect key="frame" x="110" y="110" width="100" height="179"/>
                                     </view>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fqp-dj-6lm">
-                                        <rect key="frame" x="0.0" y="309" width="320" height="2"/>
+                                        <rect key="frame" x="0.0" y="397" width="320" height="2"/>
                                     </progressView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1159,7 +1178,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlH-Jg-axS" customClass="MDCFloatingButton">
-                                <rect key="frame" x="256" y="367" width="48" height="48"/>
+                                <rect key="frame" x="256" y="455" width="48" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="0sM-Qn-xfN"/>

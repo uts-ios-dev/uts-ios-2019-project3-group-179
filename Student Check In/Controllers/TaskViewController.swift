@@ -73,7 +73,8 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
         let auth = FirebaseAuthManager()
-        if auth.logout() {
+        auth.logout()
+        if !auth.isSignedIn() {
             performSegue(withIdentifier: "LoginViewSegue", sender: nil)
         }
     }

@@ -44,6 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        errorLabel.text = ""
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         loginProgressBar.startAnimating()
