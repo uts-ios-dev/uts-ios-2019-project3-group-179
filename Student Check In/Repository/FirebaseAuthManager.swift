@@ -20,6 +20,7 @@ class FirebaseAuthManager {
     //Registers user into firebase authentication and also creates user profile
     //in database for storing of users data
     func register(email: String, name: String, password: String, controller: RegisterViewController) {
+        //Creates a user account through firebase authentication 
         Auth.auth().createUser(withEmail: email, password: password)
         { user, error in
             if error == nil{

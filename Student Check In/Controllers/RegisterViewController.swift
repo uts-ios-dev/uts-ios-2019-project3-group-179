@@ -53,7 +53,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    //Register
+    //Register user using firebase authentication
     func registerUser(email: String, name: String, password: String) {
         let auth = FirebaseAuthManager()
         auth.register(email: email, name: name, password: password, controller: self)
